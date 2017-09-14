@@ -1,0 +1,16 @@
+{
+  "presets": "./index.js",
+  "tasks": {
+    "format": "prettier ./index.js config/**/*.js --write",
+    "lint": "eslint ./index.js config/**/*.js -f codeframe --fix",
+    "test": [
+      "yarn start format",
+      "yarn start lint"
+    ],
+    "release": [
+      "semantic-release pre",
+      "npm publish",
+      "semantic-release post"
+    ]
+  }
+}
