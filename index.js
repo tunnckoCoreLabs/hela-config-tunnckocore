@@ -1,6 +1,6 @@
 const path = require('path')
 
-const dir = path.dirname(__dirname)
+const dir = __dirname
 
 const cwd = (val) => (val ? path.join(process.cwd(), val) : process.cwd())
 const pkg = require(cwd('package.json'))
@@ -62,7 +62,7 @@ const lint = `eslint ${pkg.src} --config ${cwd(
  * @api public
  */
 
-const style = [`yarn start format`, `yarn start lint`]
+const style = [`${hela} format`, `${hela} lint`]
 
 /**
  * Deletes `dist/` folder in current working directory,
