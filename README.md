@@ -25,6 +25,22 @@ You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"H
 
 ## Table of Contents
 - [Install](#install)
+- [Tasks / Scripts](#tasks--scripts)
+  * [format](#format)
+  * [lint](#lint)
+  * [style](#style)
+  * [clean](#clean)
+  * [fresh](#fresh)
+  * [docs](#docs)
+  * [test](#test)
+  * [build](#build)
+  * [build:node](#buildnode)
+  * [build:browser](#buildbrowser)
+  * [build:browser:modern](#buildbrowsermodern)
+  * [build:browser:legacy](#buildbrowserlegacy)
+  * [release](#release)
+  * [precommit](#precommit)
+  * [commit](#commit)
 - [Related](#related)
 - [Contributing](#contributing)
 - [Author](#author)
@@ -38,6 +54,211 @@ This project requires [**Node.js**][nodeversion-url] **v6** and above. Use [**ya
 
 ```
 $ yarn add --dev hela-preset-tunnckocore
+```
+## Tasks / Scripts
+Review carefully the provided examples, [tests](./test.js) and [hela][] docs.
+
+> **Pro Tip:** Make an alias for your system, such as `ns` or `nr` for `npm start` or `yarn start`!
+
+### [format](index.js#L27)
+Script for [prettier][] formatter. It respects Prettier's `.prettierrc` config file.
+
+**Example**
+
+```
+hela format
+# or
+npm start format
+# or
+yarn start format
+```
+
+### [lint](index.js#L45)
+Script for linting, using [eslint][]. It respects the ESLint's config file resolving in current working directory.
+
+**Example**
+
+```
+hela lint
+# or
+npm start lint
+# or
+yarn start lint
+```
+
+### [style](index.js#L64)
+Runs [format](#format) and [lint](#lint) tasks in series.
+
+**Example**
+
+```
+hela style
+# or
+npm start style
+# or
+yarn start style
+```
+
+### [clean](index.js#L82)
+Deletes `dist/` folder in current working directory, using [rimraf][]
+
+**Example**
+
+```
+hela clean
+# or
+npm start clean
+# or
+yarn start clean
+```
+
+### [fresh](index.js#L103)
+Runs [clean](#clean) task, deletes `node_modules/` folder and runs `yarn install --offline`. Be aware of that Yarn may fail, if you don't have some module in the cache, so run it without `--offline` flag.
+
+**Example**
+
+```
+hela fresh
+# or
+npm start fresh
+# or
+yarn start fresh
+```
+
+### [docs](index.js#L126)
+Runs [verb][] directly, so it will respect its configuration places, such as `verb` field in `package.json` of the current working directory.
+
+**Example**
+
+```
+hela docs
+# or
+npm start docs
+# or
+yarn start docs
+```
+
+### [test](index.js#L150)
+Runs the tests using [rollup][] and [nyc][]. That task generates coverage `lcov` report, runs `nyc report` and `nyc check-coverage`. The very important thing is that, that Rollup bundles the `test/index.js` path, using [config/test.js](./config/test.js) config which includes [babel][], [babel-preset-env][] and [babel-plugin-istanbul][]. So any awesome features are available in your tests, including the `Object rest spread transform` and ES Modules.
+
+**Example**
+
+```
+hela test
+# or
+npm start test
+# or
+yarn start test
+```
+
+### [build](index.js#L173)
+Runs [clean](#clean), [build:node](#buildnode) and [build:browser](#buildbrowser) tasks and creates three bundles - CJS, ES, UMD.
+
+**Example**
+
+```
+hela build
+# or
+npm start build
+# or
+yarn start build
+```
+
+### [build:node](index.js#L206)
+Generates `dist/index.js` bundle, using [config/node.js](./config/node.js) Rollup config. This config inherits from [config/base.js](./config/base.js) which includes [rollup-plugin-babel][], [babel-plugin-transform-object-rest-spread][] and JSX [babel-plugin-transform-react-jsx][] with pragma `h`.
+
+**Example**
+
+```
+hela build:node
+# or
+npm start build:node
+# or
+yarn start build:node
+```
+
+### [build:browser](index.js#L231)
+Runs [build:browser:modern](buildbrowsermodern) and [build:browser:legacy](#buildbrowserlegacy) tasks. This config inherits from [config/base.js](./config/base.js) which includes [rollup-plugin-babel][], [babel-plugin-transform-object-rest-spread][] and JSX [babel-plugin-transform-react-jsx][] with pragma `h` and generates `dist/index.min.js` & `dist/index.umd.js` and respective `.gz` files for them, of course.
+
+> See http://j.mp/es2015-in-production for more info.
+
+**Example**
+
+```
+hela build:browser
+# or
+npm start build:browser
+# or
+yarn start build:browser
+```
+
+### [build:browser:modern](index.js#L257)
+Runs Rollup with [config/modern-browsers.js](./config/modern-browsers.js) config. And generates `dist/index.min.js` is so called "modern" minified bundle which is an ES module, suitable for latest browsers that supports the `<script type="module"></script>` specification, see [config/modern-browsers.js#L24-L30](./config/modern-browsers.js#L24-L30).
+
+> See http://j.mp/es2015-in-production for more info.
+
+**Example**
+
+```
+hela build:browser:modern
+# or
+npm start build:browser:modern
+# or
+yarn start build:browser:modern
+```
+
+### [build:browser:legacy](index.js#L278)
+Runs Rollup with [config/legacy-browsers.js](./config/legacy-browsers.js) config. And generates `dist/index.umd.js` which is an UMD bundle for currently "old" browsers like `browsers: 'last 2 versions'` option.
+
+> See http://j.mp/es2015-in-production for more info.
+
+**Example**
+
+```
+hela build:browser:legacy
+# or
+npm start build:browser:legacy
+# or
+yarn start build:browser:legacy
+```
+
+### [release](index.js#L298)
+Runs [style](#style) & [build](#build) tasks and calls the [semantic-release][] `pre`, `npm publish` and `post`. This is intended the be used only on CI, like Travis CI, so you can configure `after_success` hook to `yarn start release`.
+
+**Example**
+
+```
+hela release
+# or
+npm start release
+# or
+yarn start release
+```
+
+### [precommit](index.js#L322)
+Runs `git status --porcelain`, [style](#style) & [test](#test) tasks and `git add --all`.
+
+**Example**
+
+```
+hela precommit
+# or
+npm start precommit
+# or
+yarn start precommit
+```
+
+### [commit](index.js#L347)
+Runs [simple-commit-message][] wizard helper to prompt the user for interaction to build valid commit message, against the [Conventional Commits][ccommits-url] v1 specification. After that it `git push` automatically.
+
+**Example**
+
+```
+hela commit
+# or
+npm start commit
+# or
+yarn start commit
 ```
 
 ## Related
@@ -64,8 +285,21 @@ Copyright © 2017, [Charlike Mike Reagent](https://i.am.charlike.online). Releas
 _This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on September 14, 2017._  
 Project scaffolded using [charlike-cli][].
 
+[babel-plugin-istanbul]: https://github.com/istanbuljs/babel-plugin-istanbul
+[babel-plugin-transform-object-rest-spread]: https://github.com/babel/babel
+[babel-plugin-transform-react-jsx]: https://github.com/babel/babel
+[babel-preset-env]: https://babeljs.io/
+[babel]: https://babeljs.io/
 [charlike-cli]: https://github.com/tunnckoCore/charlike-cli
+[eslint]: http://eslint.org
 [execa]: https://github.com/sindresorhus/execa
+[hela]: https://github.com/tunnckoCore/hela
+[nyc]: https://github.com/istanbuljs/nyc
+[prettier]: https://prettier.io
+[rimraf]: https://github.com/isaacs/rimraf
+[rollup-plugin-babel]: https://github.com/rollup/rollup-plugin-babel
+[rollup]: https://github.com/rollup/rollup
+[verb]: https://github.com/verbose/verb
 
 <!-- Heading badges -->
 [npmv-url]: https://www.npmjs.com/package/hela-preset-tunnckocore
@@ -111,8 +345,8 @@ Project scaffolded using [charlike-cli][].
 [prettier-url]: https://github.com/prettier/prettier
 [prettier-img]: https://img.shields.io/badge/styled_with-prettier-f952a5.svg
 
-[nodesecurity-url]: https://nodesecurity.io/orgs/tunnckocore-dev/projects/todo
-[nodesecurity-img]: https://nodesecurity.io/orgs/tunnckocore-dev/projects/todo/badge
+[nodesecurity-url]: https://nodesecurity.io/orgs/tunnckocore-dev/projects/b8ccbfa6-282e-4360-aee5-1497dc059e6b
+[nodesecurity-img]: https://nodesecurity.io/orgs/tunnckocore-dev/projects/b8ccbfa6-282e-4360-aee5-1497dc059e6b/badge
 <!-- the original color of nsp: 
 [nodesec-img]: https://img.shields.io/badge/nsp-no_known_vulns-35a9e0.svg -->
 
@@ -125,4 +359,5 @@ Project scaffolded using [charlike-cli][].
 [nodeversion-url]: https://nodejs.org/en/download
 [nodeversion-img]: https://img.shields.io/node/v/hela-preset-tunnckocore.svg
 
-[hela]: https://github.com/tunnckoCore/hela
+[semantic-release]: https://github.com/semantic-release/semantic-release
+[simple-commit-message]: https://github.com/bahmutov/simple-commit-message

@@ -4,7 +4,8 @@
   "description": "A [hela][] preset of tasks for @tunncoCore GitHub organization",
   "repository": "tunnckoCore/hela-preset-tunnckocore",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
-  "nspId": "todo",
+  "nspId": "b8ccbfa6-282e-4360-aee5-1497dc059e6b",
+  "precommit.silent": true,
   "main": "./index.js",
   "license": "MIT",
   "scripts": {
@@ -103,8 +104,23 @@
       "reflinks": true
     },
     "reflinks": [
+      "babel",
+      "babel-plugin-istanbul",
+      "babel-plugin-transform-object-rest-spread",
+      "babel-plugin-transform-react-jsx",
+      "babel-preset-env",
       "charlike-cli",
-      "execa"
+      "eslint",
+      "execa",
+      "hela",
+      "nyc",
+      "prettier",
+      "rimraf",
+      "rollup",
+      "rollup-plugin-babel",
+      "verb",
+      "semantic-release",
+      "simple-commit-message"
     ]
   },
   "release": {
