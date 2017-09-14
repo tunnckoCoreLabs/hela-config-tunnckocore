@@ -5,7 +5,6 @@
   "repository": "tunnckoCore/hela-preset-tunnckocore",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "nspId": "b8ccbfa6-282e-4360-aee5-1497dc059e6b",
-  "precommit.silent": true,
   "main": "./index.js",
   "license": "MIT",
   "scripts": {
