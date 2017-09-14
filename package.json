@@ -35,6 +35,7 @@
     "nyc": "^11.2.1",
     "pify": "^3.0.0",
     "prettier": "^1.6.1",
+    "rimraf": "^2.6.2",
     "rollup": "^0.49.3",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.1",
