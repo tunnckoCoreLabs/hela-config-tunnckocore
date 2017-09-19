@@ -3,8 +3,9 @@
   "tasks": {
     "format": "prettier index.js test.js config/**/*.js --write",
     "lint": "eslint index.js test.js config/**/*.js -f codeframe --fix",
+    "build": "hela style",
     "test": [
-      "yarn start style",
+      "hela style",
       "nyc --reporter=lcov node test.js",
       "nyc report",
       "nyc check-coverage"
