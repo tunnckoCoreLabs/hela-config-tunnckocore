@@ -65,7 +65,6 @@ const createConfig = (options) => {
   }
   delete options.plugins
 
-  opts.plugins = plugins
   return Object.assign(opts, options)
 }
 

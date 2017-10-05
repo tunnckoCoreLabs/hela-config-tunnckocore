@@ -13,7 +13,7 @@ const config = createConfig({
   external: Object.keys(pkg.dependencies || {})
     .concat(Object.keys(pkg.devDependencies))
     .concat(builtins),
-  plugins: [createBabel({ targets: { node: 6 } })],
+  plugins: [createBabel({ targets: { node: 6 }, plugins: ['istanbul'] })],
 })
 
 module.exports = config
