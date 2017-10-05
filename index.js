@@ -40,26 +40,14 @@ const copyFile = function copyFile (srcPath, destPath) {
 }
 
 const renovate = () => copyFile('renovate.json')
-const update = () =>
-  readdir(path.join(FOLDER, 'boilerplate')).then((fps) => {
-    const whitelist = [
-      '.codeclimate.yml',
-      '.editorconfig',
-      '.eslintignore',
-      '.eslintrc.json',
-      '.gitattributes',
-      '.gitignore',
-      '.prettierrc',
-      '.travis.yml',
-      'CODE_OF_CONDUCT.md',
-      'CONTRIBUTING.md',
-      'renovate.json',
-    ]
-
-    const list = fps.filter((fp) => whitelist.includes(fp))
-
-    return pMap(list, (fp) => copyFile(fp), { concurrency: 1 })
-  })
+const update = () => {
+  const _root = path.join(FOLDER, 'boilerplate')
+  return readdir(_root).then((fps) =>
+    pMap(fps, (fp) => copyFile(`boilerplate/${fp}`, fp), {
+      concurrency: fps.length,
+    })
+  )
+}
 
 /**
  * Script for [prettier][] formatter.
