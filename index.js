@@ -166,7 +166,7 @@ const fresh = [
  * @api public
  */
 
-const docs = `${BINDIR}/verb`
+const docs = 'verb'
 
 /**
  * Runs the tests using [rollup][] and [nyc][].
