@@ -216,20 +216,21 @@ const test = [
 const build = [`${hela} clean`, `${hela} build:node`, `${hela} build:browser`]
 
 module.exports = {
-  format,
-  lint,
-  style,
-  docs,
-  renovate,
-  update,
+  tasks: {
+    format,
+    lint,
+    style,
+    docs,
+    renovate,
+    update,
 
-  clean,
-  fresh,
+    clean,
+    fresh,
 
-  test,
-  build,
+    test,
+    build,
 
-  /**
+    /**
    * Generates `dist/index.js` bundle,
    * using [config/node.js](./config/node.js) Rollup config.
    * This config inherits from [config/base.js](./config/base.js)
@@ -248,9 +249,9 @@ module.exports = {
    * @api public
    */
 
-  'build:node': `${BINDIR}/rollup -c ${FOLDER}/config/node.js`,
+    'build:node': `${BINDIR}/rollup -c ${FOLDER}/config/node.js`,
 
-  /**
+    /**
    * Runs [build:browser:modern](buildbrowsermodern)
    * and [build:browser:legacy](#buildbrowserlegacy) tasks.
    * This config inherits from [config/base.js](./config/base.js)
@@ -273,12 +274,12 @@ module.exports = {
    * @api public
    */
 
-  'build:browser': [
-    `${hela} build:browser:modern`,
-    `${hela} build:browser:legacy`,
-  ],
+    'build:browser': [
+      `${hela} build:browser:modern`,
+      `${hela} build:browser:legacy`,
+    ],
 
-  /**
+    /**
    * Runs Rollup with [config/modern-browsers.js](./config/modern-browsers.js)
    * config. And generates `dist/index.min.js` is so called "modern" minified bundle which
    * is an ES module, suitable for latest browsers that supports
@@ -299,9 +300,9 @@ module.exports = {
    * @api public
    */
 
-  'build:browser:modern': `${BINDIR}rollup -c ${FOLDER}/config/modern-browsers.js`,
+    'build:browser:modern': `${BINDIR}rollup -c ${FOLDER}/config/modern-browsers.js`,
 
-  /**
+    /**
    * Runs Rollup with [config/legacy-browsers.js](./config/legacy-browsers.js)
    * config. And generates `dist/index.umd.js` which is an UMD bundle
    * for currently "old" browsers like `browsers: 'last 2 versions'` option.
@@ -320,9 +321,9 @@ module.exports = {
    * @api public
    */
 
-  'build:browser:legacy': `${BINDIR}/rollup -c ${FOLDER}/config/legacy-browsers.js`,
+    'build:browser:legacy': `${BINDIR}/rollup -c ${FOLDER}/config/legacy-browsers.js`,
 
-  /**
+    /**
    * Runs [style](#style) & [build](#build) tasks and calls
    * the [semantic-release][] `pre`, `npm publish` and `post`.
    * This is intended the be used only on CI, like Travis CI,
@@ -340,15 +341,15 @@ module.exports = {
    * @api public
    */
 
-  release: [
-    `${hela} style`,
-    `${hela} build`,
-    'semantic-release pre',
-    'npm publish',
-    'semantic-release post',
-  ],
+    release: [
+      `${hela} style`,
+      `${hela} build`,
+      'semantic-release pre',
+      'npm publish',
+      'semantic-release post',
+    ],
 
-  /**
+    /**
    * Runs `git status --porcelain`, [style](#style) & [test](#test) tasks
    * and `git add --all`.
    *
@@ -364,14 +365,14 @@ module.exports = {
    * @api public
    */
 
-  precommit: [
-    'git status --porcelain',
-    `${hela} style`,
-    `${hela} test`,
-    'git add --all',
-  ],
+    precommit: [
+      'git status --porcelain',
+      `${hela} style`,
+      `${hela} test`,
+      'git add --all',
+    ],
 
-  /**
+    /**
    * Runs [simple-commit-message][] wizard helper to prompt
    * the user for interaction to build valid commit message,
    * against the [Conventional Commits][ccommits-url] v1 specification.
@@ -389,5 +390,6 @@ module.exports = {
    * @api public
    */
 
-  commit: [`${BINDIR}/simple-commit-message`],
+    commit: [`${BINDIR}/simple-commit-message`],
+  },
 }
