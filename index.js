@@ -1,8 +1,12 @@
+/* eslint-disable max-len */
+
 const fs = require('fs')
 const path = require('path')
 const pMap = require('p-map')
 
-const dir = __dirname
+const FOLDER = __dirname
+
+const BINDIR = path.join(FOLDER, 'node_modules', '.bin')
 
 const cwd = (val) => (val ? path.join(process.cwd(), val) : process.cwd())
 const pkg = require(cwd('package.json')) // todo
@@ -22,7 +26,7 @@ const readdir = function readdirPromise (src) {
 
 const copyFile = function copyFile (srcPath, destPath) {
   return new Promise((resolve, reject) => {
-    const localConfig = path.join(dir, srcPath)
+    const localConfig = path.join(FOLDER, srcPath)
     const newConfig = cwd(destPath || srcPath)
 
     const src = fs.createReadStream(localConfig).once('error', reject)
@@ -54,7 +58,7 @@ const update = () =>
 
     const list = fps.filter((fp) => whitelist.includes(fp))
 
-    return pMap(list, (fp) => copyFile(fp), { concurrency: fps.length })
+    return pMap(list, (fp) => copyFile(fp), { concurrency: 1 })
   })
 
 /**
@@ -73,7 +77,9 @@ const update = () =>
  * @api public
  */
 
-const format = `prettier ${pkg.src} --config ${cwd('.prettierrc')} --write`
+const format = `${BINDIR}/prettier ${pkg.src} --config ${cwd(
+  '.prettierrc'
+)} --write`
 
 /**
  * Script for linting, using [eslint][]. It respects
@@ -91,7 +97,7 @@ const format = `prettier ${pkg.src} --config ${cwd('.prettierrc')} --write`
  * @api public
  */
 
-const lint = `eslint ${pkg.src} --config ${cwd(
+const lint = `${BINDIR}/eslint ${pkg.src} --config ${cwd(
   '.eslintrc.json'
 )} -f codeframe --fix`
 
@@ -128,7 +134,7 @@ const style = [`${hela} format`, `${hela} lint`]
  * @api public
  */
 
-const clean = `rimraf ${cwd('dist')}`
+const clean = `${BINDIR}/rimraf ${cwd('dist')}`
 
 /**
  * Runs [clean](#clean) task, deletes `node_modules/` folder
@@ -149,7 +155,11 @@ const clean = `rimraf ${cwd('dist')}`
  * @api public
  */
 
-const fresh = [`${hela} clean`, `rimraf ${cwd('node_modules')}`, 'yarn install']
+const fresh = [
+  `${hela} clean`,
+  `${BINDIR}/rimraf ${cwd('node_modules')}`,
+  'yarn install',
+]
 
 /**
  * Runs [verb][] directly, so it will respect its
@@ -168,7 +178,7 @@ const fresh = [`${hela} clean`, `rimraf ${cwd('node_modules')}`, 'yarn install']
  * @api public
  */
 
-const docs = 'verb'
+const docs = `${BINDIR}/verb`
 
 /**
  * Runs the tests using [rollup][] and [nyc][].
@@ -193,10 +203,10 @@ const docs = 'verb'
  */
 
 const test = [
-  `rollup -c ${dir}/config/test.js`,
-  `nyc --cwd=${cwd()} --reporter=lcov node ${cwd('dist/test.js')}`,
-  `nyc --cwd=${cwd()} report`,
-  `nyc --cwd=${cwd()} check-coverage`,
+  `${BINDIR}/rollup -c ${FOLDER}/config/test.js`,
+  `${BINDIR}/nyc --cwd=${cwd()} --reporter=lcov node ${cwd('dist/test.js')}`,
+  `${BINDIR}/nyc --cwd=${cwd()} report`,
+  `${BINDIR}/nyc --cwd=${cwd()} check-coverage`,
 ]
 
 /**
@@ -250,7 +260,7 @@ module.exports = {
    * @api public
    */
 
-  'build:node': `rollup -c ${dir}/config/node.js`,
+  'build:node': `${BINDIR}/rollup -c ${FOLDER}/config/node.js`,
 
   /**
    * Runs [build:browser:modern](buildbrowsermodern)
@@ -301,7 +311,7 @@ module.exports = {
    * @api public
    */
 
-  'build:browser:modern': `rollup -c ${dir}/config/modern-browsers.js`,
+  'build:browser:modern': `${BINDIR}rollup -c ${FOLDER}/config/modern-browsers.js`,
 
   /**
    * Runs Rollup with [config/legacy-browsers.js](./config/legacy-browsers.js)
@@ -322,7 +332,7 @@ module.exports = {
    * @api public
    */
 
-  'build:browser:legacy': `rollup -c ${dir}/config/legacy-browsers.js`,
+  'build:browser:legacy': `${BINDIR}/rollup -c ${FOLDER}/config/legacy-browsers.js`,
 
   /**
    * Runs [style](#style) & [build](#build) tasks and calls
@@ -391,5 +401,5 @@ module.exports = {
    * @api public
    */
 
-  commit: ['simple-commit-message'],
+  commit: [`${BINDIR}/simple-commit-message`],
 }

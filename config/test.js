@@ -13,10 +13,7 @@ const config = createConfig({
   external: Object.keys(pkg.dependencies || {})
     .concat(Object.keys(pkg.devDependencies))
     .concat(builtins),
-  plugins: [createBabel({ targets: { node: 6 }, plugins: ['istanbul'] })],
+  plugins: [createBabel({ targets: { node: 6 } })],
 })
-
-// don't remove assert, cuz we are in test environment
-config.plugins = config.plugins.filter((plugin) => plugin.name !== 'unassert')
 
 module.exports = config

@@ -7,7 +7,6 @@
 const path = require('path')
 const babel = require('rollup-plugin-babel')
 const eslint = require('rollup-plugin-eslint')
-const unassert = require('rollup-plugin-unassert')
 const commonjs = require('rollup-plugin-commonjs')
 
 // helpers
@@ -24,6 +23,7 @@ const preamble = `/**
 
 const idx = pkg.name.indexOf('/') > -1
 const name = idx ? camelcase(pkg.name.slice(idx)) : camelcase(pkg.name)
+
 const createBabel = ({ targets, plugins }) => {
   const opts = {
     presets: [
@@ -32,7 +32,7 @@ const createBabel = ({ targets, plugins }) => {
         {
           spec: true,
           modules: false,
-          useBuiltIns: true,
+          useBuiltIns: false,
           targets,
         },
       ],
@@ -55,7 +55,6 @@ const createConfig = (options) => {
   const plugins = [
     commonjs(),
     eslint({ formatter: 'codeframe', throwOnError: true, fix: true }),
-    unassert(),
   ]
 
   const opts = {
@@ -66,6 +65,7 @@ const createConfig = (options) => {
   }
   delete options.plugins
 
+  opts.plugins = plugins
   return Object.assign(opts, options)
 }
 

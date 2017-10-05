@@ -16,5 +16,10 @@ module.exports = createConfig({
   external: Object.keys(pkg.dependencies || {})
     .concat(pkg.devDependencies)
     .concat(builtins),
-  plugins: [createBabel({ targets: { node: 6 } })],
+  plugins: [
+    createBabel({
+      plugins: ['unassert'],
+      targets: { node: 6 },
+    }),
+  ],
 })

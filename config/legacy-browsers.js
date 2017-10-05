@@ -20,6 +20,7 @@ const config = createConfig({
   },
   plugins: [
     createBabel({
+      plugins: ['unassert'],
       targets: {
         // As of 24 September 2017
         // http://browserl.ist ">= 1%, Edge >= 12"
