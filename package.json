@@ -20,10 +20,12 @@
   },
   "files": [
     "index.js",
-    "config/"
+    "config/",
+    "boilerplate/"
   ],
   "dependencies": {
     "babel-core": "^7.0.0-beta.2",
+    "babel-eslint": "^8.0.1",
     "babel-plugin-external-helpers": "^7.0.0-beta.2",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.2",

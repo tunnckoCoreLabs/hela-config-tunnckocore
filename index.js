@@ -41,7 +41,7 @@ const copyFile = function copyFile (srcPath, destPath) {
 
 const renovate = () => copyFile('renovate.json')
 const update = () =>
-  readdir(__dirname).then((fps) => {
+  readdir(path.join(FOLDER, 'boilerplate')).then((fps) => {
     const whitelist = [
       '.codeclimate.yml',
       '.editorconfig',
