@@ -1,13 +1,61 @@
+const fs = require('fs')
 const path = require('path')
+const pMap = require('p-map')
 
 const dir = __dirname
 
 const cwd = (val) => (val ? path.join(process.cwd(), val) : process.cwd())
-const pkg = require(cwd('package.json'))
+const pkg = require(cwd('package.json')) // todo
 
 // workaround for using `hela` to build itself :D
 const helaBin = (v) => (v.name === 'hela' ? cwd(v.bin.hela) : 'yarn start')
 const hela = helaBin(pkg)
+
+const readdir = function readdirPromise (src) {
+  return new Promise((resolve, reject) => {
+    fs.readdir(src, (er, filepaths) => {
+      if (er) return reject(er)
+      resolve(filepaths)
+    })
+  })
+}
+
+const copyFile = function copyFile (srcPath, destPath) {
+  return new Promise((resolve, reject) => {
+    const localConfig = path.join(dir, srcPath)
+    const newConfig = cwd(destPath || srcPath)
+
+    const src = fs.createReadStream(localConfig).once('error', reject)
+    const dest = fs.createWriteStream(newConfig).once('error', reject)
+
+    src
+      .pipe(dest)
+      .once('error', reject)
+      .once('close', () => resolve())
+  })
+}
+
+const renovate = () => copyFile('renovate.json')
+const update = () =>
+  readdir(__dirname).then((fps) => {
+    const whitelist = [
+      '.codeclimate.yml',
+      '.editorconfig',
+      '.eslintignore',
+      '.eslintrc.json',
+      '.gitattributes',
+      '.gitignore',
+      '.prettierrc',
+      '.travis.yml',
+      'CODE_OF_CONDUCT.md',
+      'CONTRIBUTING.md',
+      'renovate.json',
+    ]
+
+    const list = fps.filter((fp) => whitelist.includes(fp))
+
+    return pMap(list, (fp) => copyFile(fp), { concurrency: fps.length })
+  })
 
 /**
  * Script for [prettier][] formatter.
@@ -101,11 +149,7 @@ const clean = `rimraf ${cwd('dist')}`
  * @api public
  */
 
-const fresh = [
-  `${hela} clean`,
-  `rimraf ${cwd('node_modules')}`,
-  'yarn install --offline',
-]
+const fresh = [`${hela} clean`, `rimraf ${cwd('node_modules')}`, 'yarn install']
 
 /**
  * Runs [verb][] directly, so it will respect its
@@ -178,6 +222,8 @@ module.exports = {
   lint,
   style,
   docs,
+  renovate,
+  update,
 
   clean,
   fresh,
@@ -345,5 +391,5 @@ module.exports = {
    * @api public
    */
 
-  commit: ['simple-commit-message', 'git push'],
+  commit: ['simple-commit-message'],
 }

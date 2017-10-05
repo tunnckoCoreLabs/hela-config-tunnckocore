@@ -16,4 +16,7 @@ const config = createConfig({
   plugins: [createBabel({ targets: { node: 6 }, plugins: ['istanbul'] })],
 })
 
+// don't remove assert, cuz we are in test environment
+config.plugins = config.plugins.filter((plugin) => plugin.name !== 'unassert')
+
 module.exports = config

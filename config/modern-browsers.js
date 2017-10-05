@@ -4,8 +4,8 @@
  * @license MIT
  */
 
-const uglify = require('rollup-plugin-uglify')
 const { minify } = require('uglify-es')
+const uglify = require('rollup-plugin-uglify')
 const resolve = require('rollup-plugin-node-resolve')
 const { name, pkg, preamble, createConfig, createBabel } = require('./base')
 
@@ -15,19 +15,29 @@ const gzip = require('./gzip-plugin')
 const config = createConfig({
   output: {
     name,
-    file: pkg.modern || 'dist/index.min.js',
-    format: 'es',
+    file: pkg.unpkg,
+    format: 'umd',
   },
   plugins: [
     createBabel({
       targets: {
-        browsers: [
-          'Chrome >= 60',
-          'Safari >= 10.1',
-          'iOS >= 10.3',
-          'Firefox >= 54',
-          'Edge >= 15',
-        ],
+        // As of 24 September 2017
+        // http://browserl.ist ">= 1%, Edge >= 14, not IE 11, not Chrome 49"
+
+        // Mobile:
+        // - Chrome >= 59
+        // - UC Browser >= 11.4
+        // - iOS Safari >= 10.3
+        // - iOS Safari >= 10.0-10.2
+        // - Opera Mini all
+        // - Samsung Internet >= 4
+
+        // Desktop:
+        // - Chrome 58, 59
+        // - Edge >=14
+        // - Firefox 54
+        // - Safari 10.4
+        browsers: ['>= 1%', 'Edge >= 14', 'not IE 11', 'not Chrome 49'],
       },
     }),
     uglify(
