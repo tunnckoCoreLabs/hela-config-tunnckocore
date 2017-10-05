@@ -300,7 +300,7 @@ module.exports = {
    * @api public
    */
 
-    'build:browser:modern': `${BINDIR}rollup -c ${FOLDER}/config/modern-browsers.js`,
+    'build:browser:modern': `${BINDIR}/rollup -c ${FOLDER}/config/modern-browsers.js`,
 
     /**
    * Runs Rollup with [config/legacy-browsers.js](./config/legacy-browsers.js)
