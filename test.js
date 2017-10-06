@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 const test = require('mukla')
 const tasks = require('./index')
 

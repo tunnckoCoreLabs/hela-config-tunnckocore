@@ -9,7 +9,10 @@ const builtins = require('builtin-modules')
 const { pkg, createConfig, createBabel } = require('./base')
 
 module.exports = createConfig({
-  output: [{ file: pkg.main, format: 'cjs' }, { file: pkg.module, format: 'es' }],
+  output: [
+    { file: pkg.main, format: 'cjs' },
+    { file: pkg.module, format: 'es' },
+  ],
   external: Object.keys(pkg.dependencies || {})
     .concat(pkg.devDependencies)
     .concat(builtins),

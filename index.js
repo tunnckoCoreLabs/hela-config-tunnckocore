@@ -67,7 +67,9 @@ const update = () => {
  * @api public
  */
 
-const format = `${BINDIR}/prettier ${pkg.src} --config ${cwd('.prettierrc')} --write`
+const format = `${BINDIR}/prettier ${pkg.src} --config ${cwd(
+  '.prettierrc'
+)} --write`
 
 /**
  * Script for linting, using [eslint][]. It respects
@@ -143,7 +145,11 @@ const clean = `${BINDIR}/rimraf ${cwd('dist')}`
  * @api public
  */
 
-const fresh = [`${hela} clean`, `${BINDIR}/rimraf ${cwd('node_modules')}`, 'yarn install']
+const fresh = [
+  `${hela} clean`,
+  `${BINDIR}/rimraf ${cwd('node_modules')}`,
+  'yarn install',
+]
 
 /**
  * Runs [verb][] directly, so it will respect its
@@ -270,7 +276,10 @@ module.exports = {
    * @api public
    */
 
-    'build:browser': [`${hela} build:browser:modern`, `${hela} build:browser:legacy`],
+    'build:browser': [
+      `${hela} build:browser:modern`,
+      `${hela} build:browser:legacy`,
+    ],
 
     /**
    * Runs Rollup with [config/modern-browsers.js](./config/modern-browsers.js)

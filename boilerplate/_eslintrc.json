@@ -3,12 +3,6 @@
     "standard-tunnckocore"
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "max-len": [
-      "error",
-      {
-        "code": 90
-      }
-    ]
+    "react/react-in-jsx-scope": "off"
   }
 }
