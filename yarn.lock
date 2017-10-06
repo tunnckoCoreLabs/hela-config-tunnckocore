@@ -2340,9 +2340,9 @@ hawk@~6.0.2:
     hoek "4.x.x"
     sntp "2.x.x"
 
-hela@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/hela/-/hela-1.1.0.tgz#4fb8ffbc97f734e2b3b43b7852ad3f4d483be248"
+hela@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/hela/-/hela-1.1.1.tgz#03fdc34cf00cb83b207eadcf459a7f396765356f"
   dependencies:
     arrify "^1.0.1"
     execa "^0.8.0"

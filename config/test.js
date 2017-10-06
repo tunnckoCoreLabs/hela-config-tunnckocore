@@ -9,7 +9,7 @@ const { pkg, createConfig, createBabel } = require('./base')
 
 const config = createConfig({
   input: 'test/index.js',
-  output: { file: 'dist/test.js', format: 'cjs' },
+  output: { file: 'node_modules/test-bundle.js', format: 'cjs' },
   external: Object.keys(pkg.dependencies || {})
     .concat(Object.keys(pkg.devDependencies))
     .concat(builtins),

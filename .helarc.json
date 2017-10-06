@@ -1,8 +1,8 @@
 {
   "presets": "./index.js",
   "tasks": {
-    "format": "prettier index.js test.js config/**/*.js --write",
-    "lint": "eslint index.js test.js config/**/*.js -f codeframe --fix",
+    "format": "prettier ./index.js ./test.js ./config/**/*.js --write",
+    "lint": "eslint ./index.js ./test.js ./config/**/*.js -f codeframe --fix",
     "build": "hela style",
     "test": [
       "hela style",

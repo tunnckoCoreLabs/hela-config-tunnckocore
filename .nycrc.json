@@ -1,10 +1,9 @@
 {
-  "statements": 100,
-  "functions": 100,
-  "branches": 50,
-  "lines": 100,
+  "statements": 33,
+  "functions": 33,
+  "branches": 33,
+  "lines": 33,
   "exclude": [
-    "dist",
-    "test.js"
+    "dist"
   ]
 }

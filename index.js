@@ -26,11 +26,11 @@ const readdir = function readdirPromise (src) {
 
 const copyFile = function copyFile (srcPath, destPath) {
   return new Promise((resolve, reject) => {
-    const localConfig = path.join(FOLDER, srcPath)
-    const newConfig = cwd(destPath || srcPath)
+    const srcFile = path.join(FOLDER, srcPath)
+    const destFile = cwd(destPath || srcPath)
 
-    const src = fs.createReadStream(localConfig).once('error', reject)
-    const dest = fs.createWriteStream(newConfig).once('error', reject)
+    const src = fs.createReadStream(srcFile).once('error', reject)
+    const dest = fs.createWriteStream(destFile).once('error', reject)
 
     src
       .pipe(dest)
@@ -42,8 +42,10 @@ const copyFile = function copyFile (srcPath, destPath) {
 const renovate = () => copyFile('renovate.json')
 const update = () => {
   const _root = path.join(FOLDER, 'boilerplate')
+  const rename = (fp) => fp.replace(/^_/, '.').replace(/^\$/, '')
+
   return readdir(_root).then((fps) =>
-    pMap(fps, (fp) => copyFile(`boilerplate/${fp}`, fp), {
+    pMap(fps, (fp) => copyFile(`boilerplate/${fp}`, rename(fp)), {
       concurrency: fps.length,
     })
   )
@@ -65,9 +67,7 @@ const update = () => {
  * @api public
  */
 
-const format = `${BINDIR}/prettier ${pkg.src} --config ${cwd(
-  '.prettierrc'
-)} --write`
+const format = `${BINDIR}/prettier ${pkg.src} --config ${cwd('.prettierrc')} --write`
 
 /**
  * Script for linting, using [eslint][]. It respects
@@ -143,11 +143,7 @@ const clean = `${BINDIR}/rimraf ${cwd('dist')}`
  * @api public
  */
 
-const fresh = [
-  `${hela} clean`,
-  `${BINDIR}/rimraf ${cwd('node_modules')}`,
-  'yarn install',
-]
+const fresh = [`${hela} clean`, `${BINDIR}/rimraf ${cwd('node_modules')}`, 'yarn install']
 
 /**
  * Runs [verb][] directly, so it will respect its
@@ -192,7 +188,9 @@ const docs = 'verb'
 
 const test = [
   `${BINDIR}/rollup -c ${FOLDER}/config/test.js`,
-  `${BINDIR}/nyc --cwd=${cwd()} --reporter=lcov node ${cwd('dist/test.js')}`,
+  `${BINDIR}/nyc --cwd=${cwd()} --reporter=lcov node ${cwd(
+    'node_modules/test-bundle.js'
+  )}`,
   `${BINDIR}/nyc --cwd=${cwd()} report`,
   `${BINDIR}/nyc --cwd=${cwd()} check-coverage`,
 ]
@@ -274,10 +272,7 @@ module.exports = {
    * @api public
    */
 
-    'build:browser': [
-      `${hela} build:browser:modern`,
-      `${hela} build:browser:legacy`,
-    ],
+    'build:browser': [`${hela} build:browser:modern`, `${hela} build:browser:legacy`],
 
     /**
    * Runs Rollup with [config/modern-browsers.js](./config/modern-browsers.js)
