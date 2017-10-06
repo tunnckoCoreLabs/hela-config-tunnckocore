@@ -1,8 +1,8 @@
 {
-  "statements": 33,
-  "functions": 33,
-  "branches": 33,
-  "lines": 33,
+  "statements": 0,
+  "functions": 0,
+  "branches": 0,
+  "lines": 0,
   "exclude": [
     "dist"
   ]

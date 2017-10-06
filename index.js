@@ -188,9 +188,7 @@ const docs = 'verb'
 
 const test = [
   `${BINDIR}/rollup -c ${FOLDER}/config/test.js`,
-  `${BINDIR}/nyc --cwd=${cwd()} --reporter=lcov node ${cwd(
-    'node_modules/test-bundle.js'
-  )}`,
+  `${BINDIR}/nyc --cwd=${cwd()} --reporter=lcov node ${cwd('dist/test.js')}`,
   `${BINDIR}/nyc --cwd=${cwd()} report`,
   `${BINDIR}/nyc --cwd=${cwd()} check-coverage`,
 ]
@@ -339,6 +337,7 @@ module.exports = {
     release: [
       `${hela} style`,
       `${hela} build`,
+      `${BINDIR}/rimraf ${FOLDER}/dist/test.js`,
       'semantic-release pre',
       'npm publish',
       'semantic-release post',
