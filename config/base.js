@@ -14,10 +14,11 @@ const camelcase = require('camelcase')
 const year = require('year')
 
 const pkg = require(path.join(process.cwd(), 'package.json'))
+const licenseYear = pkg.licenseStart || year()
 
 const preamble = `/**
  * @author Charlike Mike Reagent <open.source.charlike@gmail.com>
- * @copyright ${year()} @tunnckoCore/team and contributors
+ * @copyright ${licenseYear}-present @tunnckoCore/team and contributors
  * @license ${pkg.license}
  */`
 
