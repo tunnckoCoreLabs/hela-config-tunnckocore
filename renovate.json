@@ -1,26 +1,5 @@
 {
   "extends": [
-    ":base",
-    ":automergePr",
-    ":automergeMinor",
-    ":prNotPending",
-    ":preserveSemverRanges"
-  ],
-  "labels": [
-    "deps",
-    "renovate"
-  ],
-  "assignees": [
-    "charlike"
-  ],
-  "ignoreDeps": [
-    "semantic-release"
-  ],
-  "pinVersions": false,
-  "rebaseStalePrs": true,
-  "semanticCommits": true,
-  "lockFileMaintenance": {
-    "enabled": true,
-    "extends": "schedule:nonOfficeHours"
-  }
+    "tunnckocore"
+  ]
 }
