@@ -3,6 +3,7 @@
     ":base",
     ":automergePr",
     ":automergeMinor",
+    ":prNotPending",
     ":preserveSemverRanges"
   ],
   "labels": [
