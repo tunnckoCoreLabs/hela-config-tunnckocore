@@ -17,5 +17,9 @@
   ],
   "pinVersions": false,
   "rebaseStalePrs": true,
-  "semanticCommits": true
+  "semanticCommits": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": "schedule:nonOfficeHours"
+  }
 }
