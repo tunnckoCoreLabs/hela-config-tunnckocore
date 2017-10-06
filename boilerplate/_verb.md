@@ -6,6 +6,8 @@
 
 > {%= description %}
 
+<div id="thetop"></div>
+
 {%= include('highlight') %}
 
 ## Quality Assurance :100:
@@ -32,21 +34,27 @@ You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"H
 
 ## Install
 
-This project requires [**Node.js**][nodeversion-url] **v{%= engines.node.slice(2) %}** and above. Use [**yarn**](https://yarnpkg.com) **v{%= engines.yarn.slice(2) %}** / [**npm**](https://npmjs.com) **v{%= engines.npm.slice(2) %}** or above to install it.
+This project requires [**Node.js**][nodeversion-url] **v{%= engines.node.slice(2) %}** and above. Use [**yarn**](https://yarnpkg.com) **v{%= engines.yarn.slice(2) %}** / [**npm**](https://www.npmjs.com) **v{%= engines.npm.slice(2) %}** or above to install it.
 
 ```
 $ yarn add {%= name %}
 ```
+
+**[back to top](#thetop)**
 
 ## API
 Review carefully the provided examples and the working [tests](./test/index.js).
 
 {%= apidocs('src/index.js') %}
 
+**[back to top](#thetop)**
+
 {% if (verb.related && verb.related.list && verb.related.list.length) { %}
 ## Related
 {%= related(verb.related.list, { words: 12 }) %}
 {% } %}
+
+**[back to top](#thetop)**
 
 ## Contributing
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue][open-issue-url].  
