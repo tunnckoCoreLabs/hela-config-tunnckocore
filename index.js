@@ -64,9 +64,8 @@ const update = () => {
  * ```
  *
  * @name format
- * @api public
+ * @public
  */
-
 const format = `${BINDIR}/prettier ${pkg.src} --config ${cwd(
   '.prettierrc'
 )} --write`
@@ -84,9 +83,8 @@ const format = `${BINDIR}/prettier ${pkg.src} --config ${cwd(
  * ```
  *
  * @name lint
- * @api public
+ * @public
  */
-
 const lint = `${BINDIR}/eslint ${pkg.src} --config ${cwd(
   '.eslintrc.json'
 )} -f codeframe --fix`
@@ -103,9 +101,8 @@ const lint = `${BINDIR}/eslint ${pkg.src} --config ${cwd(
  * ```
  *
  * @name style
- * @api public
+ * @public
  */
-
 const style = [`${hela} format`, `${hela} lint`]
 
 /**
@@ -121,9 +118,8 @@ const style = [`${hela} format`, `${hela} lint`]
  * ```
  *
  * @name clean
- * @api public
+ * @public
  */
-
 const clean = `${BINDIR}/rimraf ${cwd('dist')}`
 
 /**
@@ -142,9 +138,8 @@ const clean = `${BINDIR}/rimraf ${cwd('dist')}`
  * ```
  *
  * @name fresh
- * @api public
+ * @public
  */
-
 const fresh = [
   `${hela} clean`,
   `${BINDIR}/rimraf ${cwd('node_modules')}`,
@@ -165,9 +160,8 @@ const fresh = [
  * ```
  *
  * @name docs
- * @api public
+ * @public
  */
-
 const docs = 'verb'
 
 /**
@@ -189,9 +183,8 @@ const docs = 'verb'
  * ```
  *
  * @name test
- * @api public
+ * @public
  */
-
 const test = [
   `${BINDIR}/rollup -c ${FOLDER}/config/test.js`,
   `${BINDIR}/nyc --cwd=${cwd()} --reporter=lcov node ${cwd('dist/test.js')}`,
@@ -212,9 +205,8 @@ const test = [
  * ```
  *
  * @name build
- * @api public
+ * @public
  */
-
 const build = [`${hela} clean`, `${hela} build:node`, `${hela} build:browser`]
 
 module.exports = {
@@ -233,116 +225,111 @@ module.exports = {
     build,
 
     /**
-   * Generates `dist/index.js` bundle,
-   * using [config/node.js](./config/node.js) Rollup config.
-   * This config inherits from [config/base.js](./config/base.js)
-   * which includes [rollup-plugin-babel][], [babel-plugin-transform-object-rest-spread][]
-   * and JSX [babel-plugin-transform-react-jsx][] with pragma `h`.
-   *
-   * ```
-   * hela build:node
-   * # or
-   * npm start build:node
-   * # or
-   * yarn start build:node
-   * ```
-   *
-   * @name build:node
-   * @api public
-   */
-
+     * Generates `dist/index.js` bundle,
+     * using [config/node.js](./config/node.js) Rollup config.
+     * This config inherits from [config/base.js](./config/base.js)
+     * which includes [rollup-plugin-babel][], [babel-plugin-transform-object-rest-spread][]
+     * and JSX [babel-plugin-transform-react-jsx][] with pragma `h`.
+     *
+     * ```
+     * hela build:node
+     * # or
+     * npm start build:node
+     * # or
+     * yarn start build:node
+     * ```
+     *
+     * @name build:node
+     * @public
+     */
     'build:node': `${BINDIR}/rollup -c ${FOLDER}/config/node.js`,
 
     /**
-   * Runs [build:browser:modern](buildbrowsermodern)
-   * and [build:browser:legacy](#buildbrowserlegacy) tasks.
-   * This config inherits from [config/base.js](./config/base.js)
-   * which includes [rollup-plugin-babel][], [babel-plugin-transform-object-rest-spread][]
-   * and JSX [babel-plugin-transform-react-jsx][] with pragma `h`
-   * and generates `dist/index.min.js` & `dist/index.umd.js` and respective
-   * `.gz` files for them, of course.
-   *
-   * > See http://j.mp/es2015-in-production for more info.
-   *
-   * ```
-   * hela build:browser
-   * # or
-   * npm start build:browser
-   * # or
-   * yarn start build:browser
-   * ```
-   *
-   * @name build:browser
-   * @api public
-   */
-
+     * Runs [build:browser:modern](buildbrowsermodern)
+     * and [build:browser:legacy](#buildbrowserlegacy) tasks.
+     * This config inherits from [config/base.js](./config/base.js)
+     * which includes [rollup-plugin-babel][], [babel-plugin-transform-object-rest-spread][]
+     * and JSX [babel-plugin-transform-react-jsx][] with pragma `h`
+     * and generates `dist/index.min.js` & `dist/index.umd.js` and respective
+     * `.gz` files for them, of course.
+     *
+     * > See http://j.mp/es2015-in-production for more info.
+     *
+     * ```
+     * hela build:browser
+     * # or
+     * npm start build:browser
+     * # or
+     * yarn start build:browser
+     * ```
+     *
+     * @name build:browser
+     * @public
+     */
     'build:browser': [
       `${hela} build:browser:modern`,
       `${hela} build:browser:legacy`,
     ],
 
     /**
-   * Runs Rollup with [config/modern-browsers.js](./config/modern-browsers.js)
-   * config. And generates `dist/index.min.js` is so called "modern" minified bundle which
-   * is an ES module, suitable for latest browsers that supports
-   * the `<script type="module"></script>` specification,
-   * see [config/modern-browsers.js#L24-L30](./config/modern-browsers.js#L24-L30).
-   *
-   * > See http://j.mp/es2015-in-production for more info.
-   *
-   * ```
-   * hela build:browser:modern
-   * # or
-   * npm start build:browser:modern
-   * # or
-   * yarn start build:browser:modern
-   * ```
-   *
-   * @name build:browser:modern
-   * @api public
-   */
-
+     * Runs Rollup with [config/modern-browsers.js](./config/modern-browsers.js)
+     * config. And generates `dist/index.min.js` is so called "modern" minified bundle which
+     * is an ES module, suitable for latest browsers that supports
+     * the `<script type="module"></script>` specification,
+     * see [config/modern-browsers.js#L24-L30](./config/modern-browsers.js#L24-L30).
+     *
+     * > See http://j.mp/es2015-in-production for more info.
+     *
+     * ```
+     * hela build:browser:modern
+     * # or
+     * npm start build:browser:modern
+     * # or
+     * yarn start build:browser:modern
+     * ```
+     *
+     * @name build:browser:modern
+     * @public
+     */
     'build:browser:modern': `${BINDIR}/rollup -c ${FOLDER}/config/modern-browsers.js`,
 
     /**
-   * Runs Rollup with [config/legacy-browsers.js](./config/legacy-browsers.js)
-   * config. And generates `dist/index.umd.js` which is an UMD bundle
-   * for currently "old" browsers like `browsers: 'last 2 versions'` option.
-   *
-   * > See http://j.mp/es2015-in-production for more info.
-   *
-   * ```
-   * hela build:browser:legacy
-   * # or
-   * npm start build:browser:legacy
-   * # or
-   * yarn start build:browser:legacy
-   * ```
-   *
-   * @name build:browser:legacy
-   * @api public
-   */
-
+     * Runs Rollup with [config/legacy-browsers.js](./config/legacy-browsers.js)
+     * config. And generates `dist/index.umd.js` which is an UMD bundle
+     * for currently "old" browsers like `browsers: 'last 2 versions'` option.
+     *
+     * > See http://j.mp/es2015-in-production for more info.
+     *
+     * ```
+     * hela build:browser:legacy
+     * # or
+     * npm start build:browser:legacy
+     * # or
+     * yarn start build:browser:legacy
+     * ```
+     *
+     * @name build:browser:legacy
+     * @public
+     */
     'build:browser:legacy': `${BINDIR}/rollup -c ${FOLDER}/config/legacy-browsers.js`,
 
     /**
-   * Runs [style](#style) & [build](#build) tasks and calls
-   * the [semantic-release][] `pre`, `npm publish` and `post`.
-   * This is intended the be used only on CI, like Travis CI,
-   * so you can configure `after_success` hook to `yarn start release`.
-   *
-   * ```
-   * hela release
-   * # or
-   * npm start release
-   * # or
-   * yarn start release
-   * ```
-   *
-   * @name release
-   * @api public
-   */
-
+     * Runs [style](#style) & [build](#build) tasks and calls
+     * the [semantic-release][] `pre`, `npm publish` and `post`.
+     * This is intended the be used only on CI, like Travis CI,
+     * so you can configure `after_success` hook to `yarn start release`.
+     *
+     * ```
+     * hela release
+     * # or
+     * npm start release
+     * # or
+     * yarn start release
+     * ```
+     *
+     * @name release
+     * @public
+     */
     release: [
       `${hela} style`,
       `${hela} build`,
@@ -353,21 +340,20 @@ module.exports = {
     ],
 
     /**
-   * Runs `git status --porcelain`, [style](#style) & [test](#test) tasks
-   * and `git add --all`.
-   *
-   * ```
-   * hela precommit
-   * # or
-   * npm start precommit
-   * # or
-   * yarn start precommit
-   * ```
-   *
-   * @name precommit
-   * @api public
-   */
-
+     * Runs `git status --porcelain`, [style](#style) & [test](#test) tasks
+     * and `git add --all`.
+     *
+     * ```
+     * hela precommit
+     * # or
+     * npm start precommit
+     * # or
+     * yarn start precommit
+     * ```
+     *
+     * @name precommit
+     * @public
+     */
     precommit: [
       'git status --porcelain',
       `${hela} style`,
@@ -376,23 +362,22 @@ module.exports = {
     ],
 
     /**
-   * Runs [simple-commit-message][] wizard helper to prompt
-   * the user for interaction to build valid commit message,
-   * against the [Conventional Commits][ccommits-url] v1 specification.
-   * After that it `git push` automatically.
-   *
-   * ```
-   * hela commit
-   * # or
-   * npm start commit
-   * # or
-   * yarn start commit
-   * ```
-   *
-   * @name commit
-   * @api public
-   */
-
+     * Runs [simple-commit-message][] wizard helper to prompt
+     * the user for interaction to build valid commit message,
+     * against the [Conventional Commits][ccommits-url] v1 specification.
+     * After that it `git push` automatically.
+     *
+     * ```
+     * hela commit
+     * # or
+     * npm start commit
+     * # or
+     * yarn start commit
+     * ```
+     *
+     * @name commit
+     * @public
+     */
     commit: [`${BINDIR}/simple-commit-message`],
   },
 }

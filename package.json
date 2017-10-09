@@ -1,8 +1,8 @@
 {
-  "name": "hela-preset-tunnckocore",
+  "name": "hela-config-tunnckocore",
   "version": "0.0.0-semantic-release",
-  "description": "A [hela][] preset of tasks for @tunncoCore GitHub organization",
-  "repository": "tunnckoCore/hela-preset-tunnckocore",
+  "description": "A [hela][] shareable config  (preset of tasks) for @tunnckoCore GitHub organization",
+  "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "nspId": "b8ccbfa6-282e-4360-aee5-1497dc059e6b",
   "main": "./index.js",
@@ -13,6 +13,7 @@
     "commit": "yarn start commit"
   },
   "license": "MIT",
+  "licenseStart": 2017,
   "engines": {
     "node": ">=6",
     "npm": ">=5",
@@ -52,7 +53,7 @@
   },
   "devDependencies": {
     "eslint-config-standard-tunnckocore": "^1.0.10",
-    "hela": "^1.1.1",
+    "hela": "^1.2.0",
     "husky": "^0.14.3",
     "mukla": "^0.4.9",
     "semantic-release": "^7.0.2"
