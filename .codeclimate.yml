@@ -12,7 +12,7 @@ engines:
 
 ratings:
   paths:
-  - src/**/*.js
+  - index.js
 
 exclude_paths:
 - src/cli.js
