@@ -1,0 +1,12 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - simple-commit-message > debug:
+        patched: '2017-10-10T02:46:04.013Z'
+    - simple-commit-message > ggit > debug:
+        patched: '2017-10-10T02:46:04.013Z'
+    - simple-commit-message > ggit > chdir-promise > debug:
+        patched: '2017-10-10T02:46:04.013Z'
