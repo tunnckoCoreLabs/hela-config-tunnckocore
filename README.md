@@ -122,7 +122,7 @@ _Project scaffolded and managed with [hela][]._
 [bithound-code-url]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore
 [bithound-code-img]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/badges/code.svg
 
-[standard-url]: https://github.com/standard/standard
+[standard-url]: https://github.com/airbnb/javascript
 [standard-img]: https://img.shields.io/badge/code_style-airbnb-brightgreen.svg
 
 [travis-url]: https://travis-ci.org/tunnckoCore/hela-config-tunnckocore
@@ -144,8 +144,8 @@ _Project scaffolded and managed with [hela][]._
 [prettier-url]: https://github.com/prettier/prettier
 [prettier-img]: https://img.shields.io/badge/styled_with-prettier-f952a5.svg
 
-[nodesecurity-url]: https://nodesecurity.io/orgs/tunnckocore/projects/c8907656-7536-417e-87f1-4609a312774c/master
-[nodesecurity-img]: https://nodesecurity.io/orgs/tunnckocore/projects/c8907656-7536-417e-87f1-4609a312774c/badge
+[nodesecurity-url]: https://nodesecurity.io/orgs/tunnckocore/projects/e5980075-9545-47a2-b946-35ee5ba2091d/master
+[nodesecurity-img]: https://nodesecurity.io/orgs/tunnckocore/projects/e5980075-9545-47a2-b946-35ee5ba2091d/badge
 <!-- the original color of nsp: 
 [nodesec-img]: https://img.shields.io/badge/nsp-no_known_vulns-35a9e0.svg -->
 
