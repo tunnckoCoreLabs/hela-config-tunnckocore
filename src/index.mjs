@@ -22,7 +22,7 @@ const precommit = [
   'yarn start test',
 ];
 
-const commit = ['git add --all', 'git-cz'];
+const commit = ['git add --all', 'commit'];
 const release = ['semantic-release pre', 'npm publish', 'semantic-release post'];
 
 const protect = () => {

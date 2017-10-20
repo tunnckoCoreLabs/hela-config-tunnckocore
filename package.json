@@ -12,7 +12,8 @@
     "test": "yarn start test",
     "precommit": "yarn start precommit",
     "commit": "yarn start commit",
-    "prepublishOnly": "yarn start protect"
+    "prepublishOnly": "yarn start protect",
+    "commitmsg": ""
   },
   "license": "tunnckoCore-1.0",
   "licenseStart": 2017,
@@ -26,13 +27,14 @@
     "rollup.config.js"
   ],
   "dependencies": {
+    "@commitlint/cli": "4.2.1",
+    "@commitlint/config-angular": "4.2.1",
+    "@commitlint/prompt-cli": "4.2.1",
     "@std/esm": "0.12.0",
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.1",
     "babel-plugin-istanbul": "4.1.5",
     "builtin-modules": "1.1.1",
-    "commitizen": "2.9.6",
-    "cz-conventional-changelog": "2.0.0",
     "eslint": "4.9.0",
     "eslint-config-standard-tunnckocore": "1.0.10",
     "eslint-config-tunnckocore": "0.2.0",
@@ -79,10 +81,5 @@
       "reflinks": true
     },
     "reflinks": []
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
