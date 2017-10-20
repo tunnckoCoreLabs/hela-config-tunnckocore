@@ -1,9 +1,9 @@
 {
   "name": "hela-config-tunnckocore",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantic-release",
   "description": "A [hela][] shareable config  (preset of tasks) for @tunnckoCore GitHub organization",
   "repository": "tunnckoCore/hela-config-tunnckocore",
-  "author": "Charlike Mike Reagent (https://tunnckocore.now.sh)",
+  "author": "Charlike Mike Reagent (https://charlike.online)",
   "nspId": "b8ccbfa6-282e-4360-aee5-1497dc059e6b",
   "main": "./src/index.js",
   "module": "./src/index.mjs",
@@ -14,7 +14,7 @@
     "commit": "yarn start commit",
     "prepublishOnly": "yarn start protect"
   },
-  "license": "Apache-2.0",
+  "license": "tunnckoCore-1.0",
   "licenseStart": 2017,
   "engines": {
     "node": ">=6",
