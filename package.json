@@ -13,7 +13,7 @@
     "precommit": "yarn start precommit",
     "commit": "yarn start commit",
     "prepublishOnly": "yarn start protect",
-    "commitmsg": ""
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "license": "tunnckoCore-1.0",
   "licenseStart": 2017,
@@ -40,6 +40,7 @@
     "eslint-config-tunnckocore": "0.2.0",
     "is-ci": "1.0.10",
     "isobject": "3.0.1",
+    "nsp": "2.8.1",
     "nyc": "11.2.1",
     "prettier": "1.7.4",
     "prettier-eslint": "8.2.1",
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "hela": "1.3.11",
+    "husky": "0.14.3",
     "mukla": "0.4.9"
   },
   "keywords": [

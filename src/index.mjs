@@ -8,6 +8,7 @@ import isCI from 'is-ci';
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
 const lint = 'eslint **/*.{mjs,js,jsx,es,es6} --format codeframe --fix';
+const security = 'nsp check';
 const style = ['yarn start format', 'yarn start lint'];
 const test = [
   `rollup -c ${path.join(path.dirname(__dirname), 'rollup.config.js')}`,
@@ -22,7 +23,13 @@ const precommit = [
   'yarn start test',
 ];
 
-const commit = ['git add --all', 'commit'];
+const commit = [
+  'npm shrinkwrap',
+  'yarn start security',
+  'git add --all',
+  'commit',
+];
+
 const release = ['semantic-release pre', 'npm publish', 'semantic-release post'];
 
 const protect = () => {
@@ -45,4 +52,5 @@ export default {
   commit,
   release,
   protect,
+  security,
 };
