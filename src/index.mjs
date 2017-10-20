@@ -22,11 +22,11 @@ const precommit = [
   'yarn start test',
 ];
 
-const commit = ['git add --all', 'simple-commit-message'];
+const commit = ['git add --all', 'git-cz'];
 const release = ['semantic-release pre', 'npm publish', 'semantic-release post'];
 
 const protect = () => {
-  // istanbul ignore next
+  /* istanbul ignore next */
   if (isCI) {
     return Promise.resolve();
   }

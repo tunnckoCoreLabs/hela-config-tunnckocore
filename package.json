@@ -31,10 +31,11 @@
     "babel-eslint": "8.0.1",
     "babel-plugin-istanbul": "4.1.5",
     "builtin-modules": "1.1.1",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
     "eslint": "4.9.0",
     "eslint-config-standard-tunnckocore": "1.0.10",
     "eslint-config-tunnckocore": "0.2.0",
-    "husky": "0.14.3",
     "is-ci": "1.0.10",
     "isobject": "3.0.1",
     "nyc": "11.2.1",
@@ -82,5 +83,10 @@
   },
   "release": {
     "analyzeCommits": "simple-commit-message"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
