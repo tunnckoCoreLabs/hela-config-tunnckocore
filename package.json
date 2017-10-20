@@ -4,7 +4,7 @@
   "description": "A [hela][] shareable config  (preset of tasks) for @tunnckoCore GitHub organization",
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
-  "nspId": "b8ccbfa6-282e-4360-aee5-1497dc059e6b",
+  "nspId": "d89cae02-66b5-4a0a-911e-811b665f4af2",
   "main": "./src/index.js",
   "module": "./src/index.mjs",
   "scripts": {
