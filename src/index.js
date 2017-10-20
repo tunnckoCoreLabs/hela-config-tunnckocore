@@ -3,4 +3,4 @@
  * @license Apache-2.0
  */
 
-module.exports = require('./esm-require.js')('./index.mjs', { cjs: true })
+module.exports = require('./esm-require.js')('./index.mjs', { cjs: true });

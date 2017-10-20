@@ -1,4 +1,0 @@
-ratings:
-  paths:
-    - "src/*.mjs"
-    - "test/*.mjs"

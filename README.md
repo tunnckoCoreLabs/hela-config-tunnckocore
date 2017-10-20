@@ -1,4 +1,4 @@
-# hela-config-tunnckocore [![npm version][npmv-img]][npmv-url] [![github release][github-release-img]][github-release-url] [![License][license-img]][license-url] [![NPM Downloads Monthly][downloads-monthly-img]][npmv-url] 
+# hela-config-tunnckocore [![npm version][npmv-img]][npmv-url] [![github release][github-release-img]][github-release-url] [![License][license-img]][license-url] 
 
 > A [hela][] shareable config  (preset of tasks) for @tunnckoCore GitHub organization
 
@@ -8,10 +8,12 @@ _You might also be interested in [hela][highlighted-link] or in the other [relat
 
 ## Quality Assurance :100:
 
-[![Code Climate][codeclimate-img]][codeclimate-url] 
+[![bitHound Deps][bithound-code-img]][bithound-code-url] 
 [![Code Style Standard][standard-img]][standard-url] 
 [![Linux Build][travis-img]][travis-url] 
 [![Code Coverage][codecov-img]][codecov-url] 
+[![bitHound Score][bithound-score-img]][bithound-score-url] 
+[![bitHound Deps][bithound-deps-img]][bithound-deps-url] 
 [![Dependencies Status][dependencies-img]][dependencies-url] 
 [![Renovate App Status][renovate-img]][renovate-url]
 
@@ -36,6 +38,7 @@ You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"H
 [![PayPal Author Support][paypal-donate-img]][paypal-donate-url] 
 [![Share Love Tweet][share-love-img]][share-love-url] 
 [![NPM Downloads Weekly][downloads-weekly-img]][npmv-url] 
+[![NPM Downloads Monthly][downloads-monthly-img]][npmv-url] 
 [![NPM Downloads Total][downloads-total-img]][npmv-url] 
 
 ## Table of Contents
@@ -113,17 +116,23 @@ _Project scaffolded and managed with [hela][]._
 [downloads-monthly-img]: https://img.shields.io/npm/dm/hela-config-tunnckocore.svg
 
 <!-- Front line badges -->
-[codeclimate-url]: https://codeclimate.com/github/tunnckoCore/hela-config-tunnckocore
-[codeclimate-img]: https://img.shields.io/codeclimate/github/tunnckoCore/hela-config-tunnckocore.svg
+[bithound-score-url]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore
+[bithound-score-img]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/badges/score.svg
+
+[bithound-code-url]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/code
+[bithound-code-img]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/badges/code.svg
 
 [standard-url]: https://github.com/standard/standard
-[standard-img]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[standard-img]: https://img.shields.io/badge/code_style-airbnb-brightgreen.svg
 
 [travis-url]: https://travis-ci.org/tunnckoCore/hela-config-tunnckocore
 [travis-img]: https://img.shields.io/travis/tunnckoCore/hela-config-tunnckocore/master.svg?label=linux
 
 [codecov-url]: https://codecov.io/gh/tunnckoCore/hela-config-tunnckocore
 [codecov-img]: https://img.shields.io/codecov/c/github/tunnckoCore/hela-config-tunnckocore/master.svg
+
+[bithound-deps-url]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/dependencies/npm
+[bithound-deps-img]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/badges/dependencies.svg
 
 [dependencies-url]: https://david-dm.org/tunnckoCore/hela-config-tunnckocore
 [dependencies-img]: https://img.shields.io/david/tunnckoCore/hela-config-tunnckocore.svg
