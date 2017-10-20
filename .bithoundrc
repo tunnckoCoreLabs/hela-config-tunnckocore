@@ -10,7 +10,7 @@
       "is-ci",
       "husky",
       "eslint*",
-      "babel-*",
+      "babel-*"
     ]
   }
 }
