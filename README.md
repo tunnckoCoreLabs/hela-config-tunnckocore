@@ -15,7 +15,6 @@ _You might also be interested in [hela][highlighted-link] or in the other [relat
 [![bitHound Score][bithound-score-img]][bithound-score-url] 
 [![bitHound Deps][bithound-deps-img]][bithound-deps-url] 
 [![Dependencies Status][dependencies-img]][dependencies-url] 
-[![Renovate App Status][renovate-img]][renovate-url]
 
 If you have any _how-to_ kind of questions, please read [Code of Conduct](./CODE_OF_CONDUCT.md) and **join the chat** rooms or [open an issue][open-issue-url].  
 You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"How to contribute?"_, we describe everything **_stated_** by  the badges.
@@ -26,6 +25,7 @@ You may also read the [Contributing Guide](./CONTRIBUTING.md). There, beside _"H
 [![Conventional Commits][ccommits-img]][ccommits-url] 
 [![Semantic Release][semantic-release-img]][semantic-release-url] 
 [![Node Version Required][nodeversion-img]][nodeversion-url] 
+[![Renovate App Status][renovate-img]][renovate-url]
 
 <a target="_blank" rel="nofollow" href="https://app.codesponsor.io/link/K7yYzzA5nb2ZDR4GTKmgUdfe/tunnckoCore/hela-config-tunnckocore">
   <img alt="Sponsor" width="888" height="68" src="https://app.codesponsor.io/embed/K7yYzzA5nb2ZDR4GTKmgUdfe/tunnckoCore/hela-config-tunnckocore.svg" />
@@ -137,9 +137,6 @@ _Project scaffolded and managed with [hela][]._
 [dependencies-url]: https://david-dm.org/tunnckoCore/hela-config-tunnckocore
 [dependencies-img]: https://img.shields.io/david/tunnckoCore/hela-config-tunnckocore.svg
 
-[renovate-url]: https://renovateapp.com
-[renovate-img]: https://img.shields.io/badge/renovate-enabled-brightgreen.svg
-
 <!-- Second front of badges -->
 [chat-url]: https://tunnckocore.flock.com/?i=cx2xoeofjtj6eo6c
 [chat-img]: https://img.shields.io/badge/chat-on_flock-brightgreen.svg
@@ -160,6 +157,9 @@ _Project scaffolded and managed with [hela][]._
 
 [nodeversion-url]: https://nodejs.org/en/download
 [nodeversion-img]: https://img.shields.io/node/v/hela-config-tunnckocore.svg
+
+[renovate-url]: https://renovateapp.com
+[renovate-img]: https://img.shields.io/badge/renovate-enabled-brightgreen.svg
 
 <!-- Third badges line (After CodeSponsor ads) -->
 [all-contributors-img]: https://img.shields.io/github/contributors/tunnckoCore/hela-config-tunnckocore.svg?label=all%20contributors&colorB=ffa500
