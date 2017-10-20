@@ -119,7 +119,7 @@ _Project scaffolded and managed with [hela][]._
 [bithound-score-url]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore
 [bithound-score-img]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/badges/score.svg
 
-[bithound-code-url]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/code
+[bithound-code-url]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore
 [bithound-code-img]: https://www.bithound.io/github/tunnckoCore/hela-config-tunnckocore/badges/code.svg
 
 [standard-url]: https://github.com/standard/standard
