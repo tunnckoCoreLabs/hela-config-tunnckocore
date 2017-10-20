@@ -17,6 +17,7 @@ test('prepublish task should throw on local', () => {
   if (isCI) {
     return tasks.protect()
   }
+
   return tasks.protect().catch((er) => {
     test.strictEqual(er.message.includes('"npm publish" is forbidden'), true)
   })

@@ -5,7 +5,6 @@
 
 import path from 'path'
 import isCI from 'is-ci'
-// import getConfig from './rollup-test-config.mjs'
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}'
 const lint = 'eslint **/*.{mjs,js,jsx,es,es6} --format codeframe --fix'
@@ -28,12 +27,12 @@ const commit = ['simple-commit-message']
 const release = ['semantic-release pre', 'npm publish', 'semantic-release post']
 
 const protect = () => {
-  const msg = 'the "npm publish" is forbidden, we use semantic-release on CI'
-
   // istanbul ignore next
   if (isCI) {
     return Promise.resolve()
   }
+
+  const msg = 'the "npm publish" is forbidden, we use semantic-release on CI'
 
   return Promise.reject(new Error(msg))
 }
