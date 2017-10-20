@@ -1,6 +1,6 @@
 /**
  * @copyright 2017-present, Charlike Mike Reagent <olsten.larck@gmail.com>
- * @license Apache-2.0
+ * @license tunnckoCore-1.0
  */
 
 import isCI from 'is-ci';

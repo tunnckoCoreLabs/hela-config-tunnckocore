@@ -1,18 +1,15 @@
 /**
  * @copyright 2017-present, Charlike Mike Reagent <olsten.larck@gmail.com>
- * @license Apache-2.0
+ * @license tunnckoCore-1.0
  */
 
-import path from 'path';
 import isCI from 'is-ci';
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
 const lint = 'eslint **/*.{mjs,js,jsx,es,es6} --format codeframe --fix';
-const security = 'nsp check';
 const style = ['yarn start format', 'yarn start lint'];
 const test = [
-  `rollup -c ${path.join(path.dirname(__dirname), 'rollup.config.js')}`,
-  'nyc --reporter=lcov node dist/test.js',
+  'nyc --reporter=lcov babel-node test/index.mjs',
   'nyc report',
   'nyc check-coverage',
 ];
@@ -23,12 +20,7 @@ const precommit = [
   'yarn start test',
 ];
 
-const commit = [
-  'npm shrinkwrap',
-  'yarn start security',
-  'git add --all',
-  'commit',
-];
+const commit = ['git add --all', 'simple-commit-message'];
 
 const release = ['semantic-release pre', 'npm publish', 'semantic-release post'];
 
@@ -52,5 +44,4 @@ export default {
   commit,
   release,
   protect,
-  security,
 };
