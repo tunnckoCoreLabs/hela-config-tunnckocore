@@ -22,7 +22,8 @@
     "yarn": ">=1"
   },
   "files": [
-    "src/"
+    "src/",
+    "rollup.config.js"
   ],
   "dependencies": {
     "@std/esm": "0.12.0",
