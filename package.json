@@ -1,11 +1,12 @@
 {
   "name": "hela-config-tunnckocore",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-development",
   "description": "A [hela][] shareable config  (preset of tasks) for @tunnckoCore GitHub organization",
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://tunnckocore.now.sh)",
   "nspId": "b8ccbfa6-282e-4360-aee5-1497dc059e6b",
-  "main": "./index.js",
+  "main": "./src/index.js",
+  "module": "./src/index.mjs",
   "scripts": {
     "start": "hela",
     "test": "yarn start test",
@@ -21,7 +22,7 @@
     "yarn": ">=1"
   },
   "files": [
-    "index.js"
+    "src/"
   ],
   "dependencies": {
     "@std/esm": "0.12.0",
