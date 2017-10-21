@@ -5,8 +5,8 @@
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
   "nspId": "e5980075-9545-47a2-b946-35ee5ba2091d",
-  "main": "./src/index.js",
-  "module": "./src/index.mjs",
+  "main": "./src/index-cjs.js",
+  "module": "./src/index-esm.js",
   "scripts": {
     "start": "hela",
     "test": "yarn start test",
@@ -14,7 +14,7 @@
     "commit": "yarn start commit",
     "prepublishOnly": "yarn start protect"
   },
-  "license": "tunnckoCore-1.0",
+  "license": "Apache-2.0",
   "licenseStart": 2017,
   "engines": {
     "node": ">=6",
@@ -35,7 +35,7 @@
     "hela": "1.3.12",
     "is-ci": "1.0.10",
     "isobject": "3.0.1",
-    "nyc": "9",
+    "nyc": "11.2.1",
     "prettier": "1.7.4",
     "prettier-eslint": "8.2.1",
     "prettier-eslint-cli": "4.4.0",

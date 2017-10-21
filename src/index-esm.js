@@ -1,6 +1,6 @@
 /**
  * @copyright 2017-present, Charlike Mike Reagent <olsten.larck@gmail.com>
- * @license tunnckoCore-1.0
+ * @license Apache-2.0
  */
 
 import isCI from 'is-ci';
@@ -9,7 +9,7 @@ const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
 const lint = 'eslint **/*.{mjs,js,jsx,es,es6} --format codeframe --fix';
 const style = ['yarn start format', 'yarn start lint'];
 const test = [
-  'nyc --reporter=lcov babel-node test/index.mjs',
+  'nyc --reporter=lcov babel-node test/index.js',
   'nyc report',
   'nyc check-coverage',
 ];

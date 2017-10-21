@@ -1,10 +1,10 @@
 /**
  * @copyright 2017-present, Charlike Mike Reagent <olsten.larck@gmail.com>
- * @license tunnckoCore-1.0
+ * @license Apache-2.0
  */
 
 const isObject = require('isobject');
-const config = require('@std/esm')(module)('./index.mjs');
+const config = require('@std/esm')(module, { esm: 'js' })('./index-esm.js');
 
 const interop = (ex) => (isObject(ex) && 'default' in ex ? ex.default : ex);
 

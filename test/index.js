@@ -1,11 +1,11 @@
 /**
  * @copyright 2017-present, Charlike Mike Reagent <olsten.larck@gmail.com>
- * @license tunnckoCore-1.0
+ * @license Apache-2.0
  */
 
 import isCI from 'is-ci';
 import test from 'mukla';
-import tasks from '../src/index.mjs';
+import tasks from '../src/index-esm.js';
 
 test('preset/config export tasks object', () => {
   test.strictEqual(typeof tasks, 'object');

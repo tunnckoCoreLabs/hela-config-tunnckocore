@@ -1,1 +1,1 @@
-extends: ./src/index.js
+extends: ./src/index-cjs.js

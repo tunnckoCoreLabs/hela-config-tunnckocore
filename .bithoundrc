@@ -1,17 +1,7 @@
 {
   "dependencies": {
     "unused-ignores": [
-      "simple-commit-message",
-      "semantic-release",
-      "rollup*",
-      "rimraf",
-      "prettier*",
-      "nyc",
-      "is-ci",
-      "husky",
-      "eslint*",
-      "babel-*",
-      "@commitlint/*"
+      "hela"
     ]
   }
 }
