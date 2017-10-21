@@ -1,7 +1,15 @@
 {
   "dependencies": {
     "unused-ignores": [
-      "hela"
+      "hela",
+      "semantic-release",
+      "rimraf",
+      "prettier-eslint-cli",
+      "prettier-eslint",
+      "prettier",
+      "nyc",
+      "babel-node",
+      "babel-core"
     ]
   }
 }
