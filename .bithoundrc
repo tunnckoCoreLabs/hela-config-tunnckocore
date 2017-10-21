@@ -4,6 +4,7 @@
       "hela",
       "semantic-release",
       "rimraf",
+      "eslint",
       "prettier-eslint-cli",
       "prettier-eslint",
       "prettier",
