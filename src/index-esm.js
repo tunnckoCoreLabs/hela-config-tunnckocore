@@ -35,7 +35,22 @@ const protect = () => {
   return Promise.reject(new Error(msg));
 };
 
+const ac = ({ argv, helaExec }) => {
+  const arg = argv._.slice(1).shift();
+  if (!arg) {
+    return helaExec('all-contributors init');
+  }
+  if (arg === 'a' || arg === 'add') {
+    return helaExec('all-contributors add');
+  }
+  if (arg === 'g' || arg === 'gen' || arg === 'generate') {
+    return helaExec('all-contributors generate');
+  }
+  return Promise.reject(new Error('hela ac: provide "add" or "gen" command'));
+};
+
 export default {
+  ac,
   format,
   lint,
   style,

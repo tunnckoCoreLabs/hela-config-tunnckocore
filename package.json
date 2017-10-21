@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "@std/esm": "0.12.1",
+    "all-contributors-cli": "4.5.1",
     "babel-core": "7.0.0-beta.3",
     "babel-node": "7.0.0-beta.3",
     "babel-plugin-istanbul": "4.1.5",
