@@ -5,6 +5,7 @@
       "semantic-release",
       "rimraf",
       "eslint",
+      "all-contributors-cli",
       "prettier-eslint-cli",
       "prettier-eslint",
       "prettier",

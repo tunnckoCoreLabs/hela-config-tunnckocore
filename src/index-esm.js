@@ -20,7 +20,7 @@ const precommit = [
   'yarn start test',
 ];
 
-const commit = ['git add --all', 'simple-commit-message'];
+const commit = ['yarn start ac gen', 'git add --all', 'simple-commit-message'];
 
 const release = ['semantic-release pre', 'npm publish', 'semantic-release post'];
 
