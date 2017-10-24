@@ -3,9 +3,9 @@
  * @license Apache-2.0
  */
 
-import isCI from 'is-ci';
-import test from 'mukla';
-import tasks from '../src/index-esm.js';
+const isCI = require('is-ci');
+const test = require('mukla');
+const tasks = require('../src/index.js');
 
 test('preset/config export tasks object', () => {
   test.strictEqual(typeof tasks, 'object');

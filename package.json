@@ -1,12 +1,12 @@
 {
   "name": "hela-config-tunnckocore",
   "version": "0.0.0-semantic-release",
-  "description": "A [hela][] shareable config  (preset of tasks) for @tunnckoCore GitHub organization",
+  "description": "A shareable config (preset of tasks) for the [hela][] task runner.",
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
-  "nspId": "e5980075-9545-47a2-b946-35ee5ba2091d",
-  "main": "./src/index-cjs.js",
-  "module": "./src/index-esm.js",
+  "nspId": "todo",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
   "scripts": {
     "start": "hela",
     "test": "yarn start test",
@@ -17,55 +17,33 @@
   "license": "Apache-2.0",
   "licenseStart": 2017,
   "engines": {
-    "node": ">=6",
+    "node": ">=8",
     "npm": ">=5",
     "yarn": ">=1"
   },
   "files": [
-    "src/"
+    "dist/"
   ],
   "dependencies": {
-    "@std/esm": "0.12.1",
     "all-contributors-cli": "4.5.1",
-    "babel-core": "7.0.0-beta.3",
-    "babel-node": "7.0.0-beta.3",
-    "babel-plugin-istanbul": "4.1.5",
-    "babel-preset-env": "7.0.0-beta.3",
     "eslint": "4.9.0",
     "eslint-config-tunnckocore": "0.2.0",
     "hela": "1.3.12",
     "is-ci": "1.0.10",
-    "isobject": "3.0.1",
     "nyc": "11.2.1",
     "prettier": "1.7.4",
     "prettier-eslint": "8.2.1",
     "prettier-eslint-cli": "4.4.0",
     "rimraf": "2.6.2",
-    "semantic-release": "8.2.1"
+    "semantic-release": "8.2.0",
+    "simple-commit-message": "3.3.2"
   },
   "devDependencies": {
-    "mukla": "0.4.9",
-    "simple-commit-message": "3.3.2"
+    "mukla": "0.4.9"
   },
   "keywords": [
     "automation"
   ],
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "spec": true,
-          "targets": {
-            "node": 6
-          }
-        }
-      ]
-    ],
-    "plugins": [
-      "istanbul"
-    ]
-  },
   "verb": {
     "run": true,
     "toc": {

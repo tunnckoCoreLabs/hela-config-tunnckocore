@@ -3,22 +3,18 @@
  * @license Apache-2.0
  */
 
-import isCI from 'is-ci';
+const isCI = require('is-ci');
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
-const lint = 'eslint **/*.{mjs,js,jsx,es,es6} --format codeframe --fix';
+const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix';
 const style = ['yarn start format', 'yarn start lint'];
 const test = [
-  'nyc --reporter=lcov babel-node test/index.js',
+  'nyc --reporter=lcov node test/index.js',
   'nyc report',
   'nyc check-coverage',
 ];
 
-const precommit = [
-  'yarn start style',
-  'git status --porcelain',
-  'yarn start test',
-];
+const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
 
 const commit = ['yarn start ac gen', 'git add --all', 'simple-commit-message'];
 
@@ -49,7 +45,7 @@ const ac = ({ argv, helaExec }) => {
   return Promise.reject(new Error('hela ac: provide "add" or "gen" command'));
 };
 
-export default {
+module.exports = {
   ac,
   format,
   lint,
