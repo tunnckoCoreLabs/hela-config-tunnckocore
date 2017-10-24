@@ -1,5 +1,16 @@
 {
   "dependencies": {
-    "unused-ignores": []
+    "unused-ignores": [
+      "simple-commit-message",
+      "semantic-release",
+      "rimraf",
+      "prettier-eslint-cli",
+      "prettier-eslint",
+      "prettier",
+      "nyc",
+      "hela",
+      "eslint",
+      "all-contributors-cli"
+    ]
   }
 }
