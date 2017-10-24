@@ -1,6 +1,6 @@
 # hela-config-tunnckocore [![npm version][npmv-img]][npmv-url] [![github release][github-release-img]][github-release-url] [![License][license-img]][license-url] 
 
-> A shareable config (preset of tasks) for the [hela][] task runner.
+> A [hela][] task runner shareable config (preset of tasks) for the @tunnckoCore org
 
 <div id="thetop"></div>
 
