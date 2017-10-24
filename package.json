@@ -5,8 +5,7 @@
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
   "nspId": "todo",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "hela",
     "test": "yarn start test",
@@ -22,7 +21,7 @@
     "yarn": ">=1"
   },
   "files": [
-    "dist/"
+    "src/"
   ],
   "dependencies": {
     "all-contributors-cli": "4.5.1",
