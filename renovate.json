@@ -1,5 +1,3 @@
 {
-  "extends": [
-    "tunnckocore"
-  ]
+  "extends": ["tunnckocore"]
 }
