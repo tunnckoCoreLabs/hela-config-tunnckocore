@@ -4,7 +4,7 @@
   "description": "A shareable config (preset of tasks) for the [hela][] task runner.",
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
-  "nspId": "todo",
+  "nspId": "e5980075-9545-47a2-b946-35ee5ba2091d",
   "main": "./src/index.js",
   "scripts": {
     "start": "hela",
