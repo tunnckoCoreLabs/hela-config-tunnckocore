@@ -34,7 +34,7 @@
     "prettier-eslint": "8.2.1",
     "prettier-eslint-cli": "4.4.0",
     "rimraf": "2.6.2",
-    "semantic-release": "8.2.0",
+    "semantic-release": "8.0.0",
     "simple-commit-message": "3.3.2"
   },
   "devDependencies": {
