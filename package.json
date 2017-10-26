@@ -1,6 +1,6 @@
 {
   "name": "hela-config-tunnckocore",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-development",
   "description": "A [hela][] task runner shareable config (preset of tasks) for @tunnckoCore org",
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
@@ -34,7 +34,7 @@
     "prettier-eslint": "8.2.1",
     "prettier-eslint-cli": "4.4.0",
     "rimraf": "2.6.2",
-    "semantic-release": "8.0.0",
+    "semantic-release": "6.3.6",
     "simple-commit-message": "3.3.2"
   },
   "devDependencies": {
