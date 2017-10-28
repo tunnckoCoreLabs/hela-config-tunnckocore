@@ -1743,9 +1743,9 @@ hawk@~6.0.2:
     hoek "4.x.x"
     sntp "2.x.x"
 
-hela@1.3.12:
-  version "1.3.12"
-  resolved "https://registry.yarnpkg.com/hela/-/hela-1.3.12.tgz#9cb15b982bcdc77e636275f23a4849570f4a7b05"
+hela@1.3.14:
+  version "1.3.14"
+  resolved "https://registry.yarnpkg.com/hela/-/hela-1.3.14.tgz#ea7888369d7d2cc5bf61cc5fef08120f5f6bf8f0"
   dependencies:
     "@std/esm" "0.12.0"
     "@tunnckocore/pretty-config" "0.2.2"
