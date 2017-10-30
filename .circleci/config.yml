@@ -59,9 +59,9 @@ jobs:
     steps:
       - checkout
       - *restore_modules_cache
-      - add_ssh_keys:
-          fingerprints:
-            - "b3:e4:6c:6e:48:9f:a2:6b:33:43:8d:3b:12:06:52:27"
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "b3:e4:6c:6e:48:9f:a2:6b:33:43:8d:3b:12:06:52:27"
       - run:
           name: Setup NPM and GitHub
           command: |
@@ -69,8 +69,8 @@ jobs:
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
             yarn config set version-git-message "chore(release): v%s"
             yarn config set version-sign-git-tag true
-            git config --global user.email "Charlike Mike Reagent"
-            git config --global user.name "olsten.larck@gmail.com"
+            # git config --global user.name "Charlike Mike Reagent"
+            # git config --global user.email "olsten.larck@gmail.com"
       - run:
           name: Releasing to NPM and GitHub
           command: yarn start release
