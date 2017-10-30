@@ -69,6 +69,8 @@ jobs:
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
             yarn config set version-git-message "chore(release): v%s"
             yarn config set version-sign-git-tag true
+            git config --global user.email "Charlike Mike Reagent"
+            git config --global user.name "olsten.larck@gmail.com"
       - run:
           name: Releasing to NPM and GitHub
           command: yarn start release
