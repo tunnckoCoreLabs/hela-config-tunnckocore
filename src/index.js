@@ -18,7 +18,7 @@ const test = [
 
 const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
 const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
-const release = ({ helaShell } /* eslint-disable max-statements */) =>
+const release = ({ helaShell }) =>
   gitLog.promise().then((commits) => {
     const { header, body } = commits[1].data;
     const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
@@ -35,8 +35,6 @@ const release = ({ helaShell } /* eslint-disable max-statements */) =>
     if (/break|breaking|major/.test(parts[1]) || isBreaking) {
       version = 'major';
     }
-
-    process.env.SKIPPING_PUBLISH_QUX = 'FOOBAR';
 
     if (version === null) {
       console.log('SKIP PUBLISHING'); // eslint-disable-line no-console

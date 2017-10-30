@@ -70,9 +70,6 @@ jobs:
             git config --global user.name "Charlike Mike Reagent"
             git config --global user.email "olsten.larck@gmail.com"
       - run:
-          name: Checking ENV
-          command: echo $SKIPPING_PUBLISH_QUX
-      - run:
           name: Releasing to NPM and GitHub
           command: yarn start release
 

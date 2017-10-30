@@ -1,4 +1,4 @@
-#!/bin/bash -eo pipefail
+#!/bin/bash
 
 if [ "$CIRCLECI" = "true" ]; then
   echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm adduser
