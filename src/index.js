@@ -17,8 +17,6 @@ const test = [
 const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
 const commit = ['yarn start ac gen', 'git add --all', 'simple-commit-message'];
 
-// const release = ['semantic-release pre', 'npm publish', 'semantic-release post'];
-
 const protect = () => {
   /* istanbul ignore next */
   if (isCI) {
@@ -52,6 +50,5 @@ module.exports = {
   test,
   precommit,
   commit,
-  // release,
   protect,
 };
