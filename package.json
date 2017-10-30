@@ -39,7 +39,14 @@
     "mukla": "0.4.9"
   },
   "keywords": [
-    "automation"
+    "automation",
+    "hela",
+    "hela-config",
+    "shareable config",
+    "tasks",
+    "tunnckocore",
+    "preset",
+    "hela-preset"
   ],
   "verb": {
     "run": true,
@@ -54,7 +61,7 @@
     ],
     "related": {
       "list": [
-        "dush",
+        "gitcommit",
         "p-map-series",
         "execa",
         "hela",
@@ -66,13 +73,5 @@
       "reflinks": true
     },
     "reflinks": []
-  },
-  "release": {
-    "analyzeCommits": "simple-commit-message"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/conventional-changelog"
-    }
   }
 }
