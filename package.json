@@ -36,7 +36,9 @@
     "simple-commit-message": "3.3.2"
   },
   "devDependencies": {
-    "mukla": "0.4.9"
+    "conventional-changelog": "1.1.6",
+    "mukla": "0.4.9",
+    "parse-git-log": "0.2.1"
   },
   "keywords": [
     "automation"
@@ -69,5 +71,10 @@
   },
   "release": {
     "analyzeCommits": "simple-commit-message"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/conventional-changelog"
+    }
   }
 }
