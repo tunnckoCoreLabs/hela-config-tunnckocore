@@ -4,6 +4,7 @@
  */
 
 const isCI = require('is-ci');
+const gitLog = require('parse-git-log');
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
 const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix';
@@ -16,6 +17,29 @@ const test = [
 
 const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
 const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
+const release = ({ helaShell }) =>
+  gitLog.promise().then((commits) => {
+    const { header, body } = commits[1].data;
+    const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
+    const breaking = /BREAKING CHANGE/i;
+    let version = null;
+
+    if (parts[1] === 'fix') {
+      version = 'patch';
+    }
+    if (parts[1] === 'feat') {
+      version = 'minor';
+    }
+    if (header.indexOf(breaking) !== -1 || body.indexOf(breaking) !== -1) {
+      version = 'major';
+    }
+
+    return helaShell([
+      `yarn version --new-version ${version}`,
+      'git push --follow-tags',
+      'npm publish',
+    ]);
+  });
 
 const protect = () => {
   /* istanbul ignore next */
@@ -50,5 +74,6 @@ module.exports = {
   test,
   precommit,
   commit,
+  release,
   protect,
 };

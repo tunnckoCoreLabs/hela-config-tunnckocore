@@ -54,19 +54,21 @@ jobs:
           destination: hela-config-tunnckocore
 
   # TODO: uncomment when ready
-  # publish:
-  #   <<: *defaults
-  #   steps:
-  #     - checkout
-  #     - *restore_modules_cache
-  #     - run:
-  #         name: Adding NPM auth token
-  #         command: |
-  #           # Foobie comment.
-  #           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-  #     - run:
-  #         name: Releasing to NPM and GitHub
-  #         command: yarn start release
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_modules_cache
+      - run:
+          name: Adding NPM auth token
+          command: |
+            # Foobie comment.
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+            yarn config set version-git-message "chore(release): v%s"
+            yarn config set version-sign-git-tag true
+      - run:
+          name: Releasing to NPM and GitHub
+          command: yarn start release
 
 workflows:
   version: 2
@@ -81,13 +83,13 @@ workflows:
             - install
             - test
       # TODO: uncomment when ready
-      # - publish:
-      #     filters:
-      #      branches:
-      #        only:
-      #          - master
-      #     context: org-global
-      #     requires:
-      #       - install
-      #       - test
-      #       - build
+      - publish:
+          filters:
+           branches:
+             only:
+               - master
+          context: org-global
+          requires:
+            - install
+            - test
+            - build
