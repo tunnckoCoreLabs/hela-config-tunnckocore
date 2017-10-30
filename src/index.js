@@ -38,11 +38,7 @@ const release = ({ helaShell }) =>
       version = 'major';
     }
 
-    return helaShell([
-      `yarn version --new-version ${version}`,
-      'git push --follow-tags',
-      'npm publish',
-    ]);
+    return helaShell(`yarn version --new-version ${version}`);
   });
 
 const protect = () => {

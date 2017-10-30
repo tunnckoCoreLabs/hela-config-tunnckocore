@@ -64,7 +64,6 @@ jobs:
           command: |
             # Token is set on login?
             # echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-            echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
             yarn config set version-git-message "chore(release): v%s"
             yarn config set version-sign-git-tag false
             git config --global push.default simple
@@ -72,26 +71,41 @@ jobs:
             git config --global user.email "olsten.larck@gmail.com"
       - run:
           name: Releasing to NPM and GitHub
-          command: yarn start release
+          command: |
+            yarn start release
+            echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm adduser
+            git push --follow-tags
+            npm publish
 
 workflows:
   version: 2
   automated:
     jobs:
-      - install
+      - install:
+          filters:
+            tags:
+              ingore: '/.*v\d+\.\d+\.\d+$/'
       - test:
+          filters:
+            tags:
+              ingore: '/.*v\d+\.\d+\.\d+$/'
           requires:
             - install
       - build:
+          filters:
+            tags:
+              ingore: '/.*v\d+\.\d+\.\d+$/'
           requires:
             - install
             - test
       # TODO: uncomment when ready
       - publish:
           filters:
-           branches:
-             only:
-               - master
+            tags:
+              ingore: '/.*v\d+\.\d+\.\d+$/'
+            branches:
+              only:
+                - master
           context: org-global
           requires:
             - install
