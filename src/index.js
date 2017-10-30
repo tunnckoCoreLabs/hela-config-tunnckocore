@@ -22,21 +22,22 @@ const release = ({ helaShell }) =>
     const { header, body } = commits[1].data;
     const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
     const breaking = /BREAKING CHANGE/i;
-    let version = parts[1];
+    const isBreaking = header.indexOf(breaking) !== -1 || body.indexOf(breaking) !== -1;
+    let version = null;
 
-    if (version === 'chore') {
-      return null;
-    }
-
-    if (parts[1] === 'fix') {
+    if (/fix|bugfix|patch/.test(parts[1])) {
       version = 'patch';
     }
-    if (parts[1] === 'feat') {
+    if (/feat|feature|minor/.test(parts[1])) {
       version = 'minor';
     }
-    if (header.indexOf(breaking) !== -1 || body.indexOf(breaking) !== -1) {
+    if (/break|breaking|major/.test(parts[1]) || isBreaking) {
       version = 'major';
     }
+    if (version === null) {
+      return null;
+    }
+    process.env.IS_VALID_COMMIT_TYPE = 'YES';
 
     return helaShell(`yarn version --new-version ${version}`);
   });

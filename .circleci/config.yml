@@ -73,37 +73,18 @@ jobs:
           name: Releasing to NPM and GitHub
           command: |
             yarn start release
-            echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm adduser
-            git push --follow-tags
-            npm publish
+            if [ "${IS_VALID_COMMIT_TYPE}" == "YES" ]; then
+              echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm adduser
+              git push --follow-tags
+              npm publish
+            fi
 
 workflows:
   version: 2
   automated:
     jobs:
-      - install:
-          filters:
-            tags:
-              ignore: /v.*/
-      - test:
-          filters:
-            tags:
-              ignore: /v.*/
-          requires:
-            - install
-      - build:
-          filters:
-            tags:
-              ignore: /v.*/
-          requires:
-            - install
-            - test
-      # TODO: uncomment when ready
+      - install
+      - test
+      - build
       - publish:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
           context: org-global
