@@ -72,12 +72,16 @@ workflows:
             - install
       - build:
           filters:
+            tags:
+              only: /v.*/
             branches:
               only: master
           requires:
             - test
       - publish:
           filters:
+            tags:
+              only: /v.*/
             branches:
               only: master
           requires:
