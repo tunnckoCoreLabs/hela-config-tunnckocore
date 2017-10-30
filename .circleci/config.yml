@@ -59,15 +59,12 @@ jobs:
     steps:
       - checkout
       - *restore_modules_cache
-      # - add_ssh_keys:
-      #     fingerprints:
-      #       - "b3:e4:6c:6e:48:9f:a2:6b:33:43:8d:3b:12:06:52:27"
       - run:
           name: Setup NPM and GitHub
           command: |
-            # Foobie comment.
-            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-            npm adduser
+            # Token is set on login?
+            # echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+            echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
             yarn config set version-git-message "chore(release): v%s"
             yarn config set version-sign-git-tag false
             git config --global push.default simple
