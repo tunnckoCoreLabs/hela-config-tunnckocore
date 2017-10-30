@@ -74,43 +74,29 @@ jobs:
           command: |
             yarn start release
             echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm adduser
-            git push --follow-tags
+            git push --tags
             npm publish
 
 workflows:
   version: 2
   automated:
     jobs:
-      - install:
-          filters:
-            tags:
-              only: /.*/
+      - install
       - test:
-          filters:
-            tags:
-              only: /.*/
           requires:
             - install
       - build:
-          filters:
-            tags:
-              only: /v\d\.\d\.\d$/
-            branches:
-              only:
-                - master
           requires:
             - install
             - test
       # TODO: uncomment when ready
       - publish:
+          requires:
+            - build
           filters:
             tags:
-              only: /v\d\.\d\.\d$/
+              ignore: /v.*$/
             branches:
               only:
                 - master
           context: org-global
-          requires:
-            - install
-            - test
-            - build
