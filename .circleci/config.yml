@@ -68,6 +68,7 @@ jobs:
             yarn config set version-sign-git-tag true
             git config --global user.email "Charlike Mike Reagent"
             git config --global user.name "olsten.larck@gmail.com"
+            git config --global user.signingkey "${GPG_SIGNING_KEY}"
       - run:
           name: Releasing to NPM and GitHub
           command: yarn start release

@@ -24,7 +24,9 @@ const release = ({ helaShell }) =>
     const breaking = /BREAKING CHANGE/i;
     let version = parts[1];
 
-    console.log(header, body, parts);
+    if (version === 'chore') {
+      return null;
+    }
 
     if (parts[1] === 'fix') {
       version = 'patch';
