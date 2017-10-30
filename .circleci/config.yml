@@ -81,11 +81,20 @@ workflows:
   version: 2
   automated:
     jobs:
-      - install
+      - install:
+          filters:
+            tags:
+              ignore: /v.*/
       - test:
+          filters:
+            tags:
+              ignore: /v.*/
           requires:
             - install
       - build:
+          filters:
+            tags:
+              ignore: /v.*/
           requires:
             - install
             - test
@@ -94,8 +103,6 @@ workflows:
           requires:
             - build
           filters:
-            tags:
-              ignore: /v.*$/
             branches:
               only:
                 - master
