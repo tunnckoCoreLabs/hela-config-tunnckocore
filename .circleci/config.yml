@@ -84,17 +84,17 @@ workflows:
       - install:
           filters:
             tags:
-              ignore: '/.*v\d+\.\d+\.\d+$/'
+              only: '/.*v\d\+\.\d\+\.\d\+$/'
       - test:
           filters:
             tags:
-              ignore: '/.*v\d+\.\d+\.\d+$/'
+              only: '/.*v\d\+\.\d\+\.\d\+$/'
           requires:
             - install
       - build:
           filters:
             tags:
-              ignore: '/.*v\d+\.\d+\.\d+$/'
+              only: '/.*v\d\+\.\d\+\.\d\+$/'
           requires:
             - install
             - test
@@ -102,10 +102,9 @@ workflows:
       - publish:
           filters:
             tags:
-              ignore: '/.*v\d+\.\d+\.\d+$/'
+              only: '/.*v\d\+\.\d\+\.\d\+$/'
             branches:
-              only:
-                - master
+              ignore: '/.*/'
           context: org-global
           requires:
             - install
