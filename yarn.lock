@@ -1217,9 +1217,9 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gitcommit@0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/gitcommit/-/gitcommit-0.2.2.tgz#11ea4e1f1d17e5935502d24165ec19e95d46da88"
+gitcommit@0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/gitcommit/-/gitcommit-0.2.3.tgz#06accc275e53d3ef25f215aa76588eb13417688f"
   dependencies:
     asky "0.2.2"
     execa "0.8.0"
