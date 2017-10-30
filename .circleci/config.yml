@@ -104,7 +104,7 @@ workflows:
             tags:
               only: '/.*v\d\+\.\d\+\.\d\+$/'
             branches:
-              ignore: '/.*/'
+              only: '/.*/'
           context: org-global
           requires:
             - install
