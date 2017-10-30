@@ -1,6 +1,6 @@
 {
   "name": "hela-config-tunnckocore",
-  "version": "2.0.3",
+  "version": "2.0.2",
   "description": "A [hela][] task runner shareable config (preset of tasks) for @tunnckoCore org",
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
@@ -10,8 +10,7 @@
     "start": "hela",
     "test": "yarn start test",
     "precommit": "yarn start precommit",
-    "commit": "yarn start commit",
-    "prepublishOnly": "yarn start protect"
+    "commit": "yarn start commit"
   },
   "license": "Apache-2.0",
   "licenseStart": 2017,
