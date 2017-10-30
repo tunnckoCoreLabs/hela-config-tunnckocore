@@ -18,6 +18,7 @@ const test = [
 
 const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
 const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
+
 const release = ({ helaShell }) =>
   gitLog.promise().then((commits) => {
     const { header, body } = commits[0].data;
@@ -42,6 +43,11 @@ const release = ({ helaShell }) =>
     }
 
     return helaShell([
+      'yarn config set version-git-message "chore(release): v%s"',
+      'yarn config set version-sign-git-tag false',
+      'git config --global push.default simple',
+      'git config --global user.name "Charlike Mike Reagent"',
+      'git config --global user.email "olsten.larck@gmail.com"',
       `yarn version --new-version ${version}`,
       `${path.join(__dirname, 'publisher.sh')}`,
     ]);
