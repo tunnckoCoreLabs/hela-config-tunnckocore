@@ -26,7 +26,7 @@
     "all-contributors-cli": "4.5.1",
     "eslint": "4.10.0",
     "eslint-config-tunnckocore": "0.2.0",
-    "gitcommit": "0.2.3",
+    "gitcommit": "0.2.4",
     "hela": "1.3.14",
     "is-ci": "1.0.10",
     "nyc": "11.3.0",
