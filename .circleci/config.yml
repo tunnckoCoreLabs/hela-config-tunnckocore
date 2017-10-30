@@ -74,7 +74,7 @@ jobs:
           command: |
             yarn start release
             echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm adduser
-            git push --tags --follow-tags
+            git push --follow-tags
             npm publish
 
 workflows:
