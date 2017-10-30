@@ -22,7 +22,9 @@ const release = ({ helaShell }) =>
     const { header, body } = commits[1].data;
     const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
     const breaking = /BREAKING CHANGE/i;
-    let version = null;
+    let version = parts[1];
+
+    console.log(header, body, parts);
 
     if (parts[1] === 'fix') {
       version = 'patch';
