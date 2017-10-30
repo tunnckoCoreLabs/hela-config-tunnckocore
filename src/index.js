@@ -52,6 +52,6 @@ module.exports = {
   test,
   precommit,
   commit,
-  release,
+  // release,
   protect,
 };
