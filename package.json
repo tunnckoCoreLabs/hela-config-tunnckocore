@@ -1,6 +1,6 @@
 {
   "name": "hela-config-tunnckocore",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "A [hela][] task runner shareable config (preset of tasks) for @tunnckoCore org",
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent (https://charlike.online)",
