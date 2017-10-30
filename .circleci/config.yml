@@ -1,16 +1,16 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/gitcommit
+  working_directory: ~/hela-config-tunnckocore
   docker:
     - image: circleci/node:8
 
 restore_modules_cache: &restore_modules_cache
   restore_cache:
     keys:
-    - gitcommit-{{ checksum "yarn.lock" }}
+    - hela-config-tunnckocore-{{ checksum "yarn.lock" }}
     # fallback to using the latest cache if no exact match is found
-    - gitcommit-
+    - hela-config-tunnckocore-
 
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           name: Installing Dependencies
           command: yarn install
       - save_cache:
-          key: gitcommit-{{ checksum "yarn.lock" }}
+          key: hela-config-tunnckocore-{{ checksum "yarn.lock" }}
           paths: node_modules
       - run:
           name: Remove node_modules to cleanup workspace
@@ -51,7 +51,7 @@ jobs:
           command: echo ok
       - store_artifacts:
           path: dist
-          destination: gitcommit
+          destination: hela-config-tunnckocore
 
   # TODO: uncomment when ready
   # publish:
