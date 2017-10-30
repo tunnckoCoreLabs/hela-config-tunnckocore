@@ -15,7 +15,7 @@ const test = [
 ];
 
 const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
-const commit = ['yarn start ac gen', 'git add --all', 'simple-commit-message'];
+const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
 
 const protect = () => {
   /* istanbul ignore next */
