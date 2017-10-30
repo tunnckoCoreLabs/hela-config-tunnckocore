@@ -53,24 +53,13 @@ jobs:
           path: dist
           destination: hela-config-tunnckocore
 
-  # TODO: uncomment when ready
   publish:
     <<: *defaults
     steps:
       - checkout
       - *restore_modules_cache
       - run:
-          name: Setup NPM and GitHub
-          command: |
-            # Token is set on login?
-            # echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-            yarn config set version-git-message "chore(release): v%s"
-            yarn config set version-sign-git-tag false
-            git config --global push.default simple
-            git config --global user.name "Charlike Mike Reagent"
-            git config --global user.email "olsten.larck@gmail.com"
-      - run:
-          name: Releasing to NPM and GitHub
+          name: Trying to deploy
           command: yarn start release
 
 workflows:
@@ -82,9 +71,15 @@ workflows:
           requires:
             - install
       - build:
+          filters:
+            branches:
+              only: master
           requires:
             - test
       - publish:
+          filters:
+            branches:
+              only: master
           requires:
             - build
           context: org-global
