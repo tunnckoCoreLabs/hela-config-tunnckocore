@@ -20,7 +20,7 @@ const precommit = ['yarn start style', 'git status --porcelain', 'yarn start tes
 const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
 const release = ({ helaShell }) =>
   gitLog.promise().then((commits) => {
-    const { header, body } = commits[1].data;
+    const { header, body } = commits[0].data;
     const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
     const breaking = /BREAKING CHANGE/i;
     const isBreaking = header.indexOf(breaking) !== -1 || body.indexOf(breaking) !== -1;
