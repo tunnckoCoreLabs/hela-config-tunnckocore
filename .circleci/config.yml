@@ -84,17 +84,17 @@ workflows:
       - install:
           filters:
             tags:
-              ingore: '/.*v\d+\.\d+\.\d+$/'
+              ignore: '/.*v\d+\.\d+\.\d+$/'
       - test:
           filters:
             tags:
-              ingore: '/.*v\d+\.\d+\.\d+$/'
+              ignore: '/.*v\d+\.\d+\.\d+$/'
           requires:
             - install
       - build:
           filters:
             tags:
-              ingore: '/.*v\d+\.\d+\.\d+$/'
+              ignore: '/.*v\d+\.\d+\.\d+$/'
           requires:
             - install
             - test
@@ -102,7 +102,7 @@ workflows:
       - publish:
           filters:
             tags:
-              ingore: '/.*v\d+\.\d+\.\d+$/'
+              ignore: '/.*v\d+\.\d+\.\d+$/'
             branches:
               only:
                 - master
