@@ -5,6 +5,10 @@ defaults: &defaults
   docker:
     - image: circleci/node:8
 
+default_filters: &default_filters
+  tags:
+    ignore: '/.*v\d+\.\d+\.\d+$/'
+
 restore_modules_cache: &restore_modules_cache
   restore_cache:
     keys:
@@ -72,11 +76,14 @@ workflows:
   version: 2
   automated:
     jobs:
-      - install
+      - install:
+          filters: *default_filters
       - test:
+          filters: *default_filters
           requires:
             - install
       - build:
+          filters: *default_filters
           requires:
             - install
             - test
