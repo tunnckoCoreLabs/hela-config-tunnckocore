@@ -3,6 +3,7 @@
  * @license Apache-2.0
  */
 
+const path = require('path');
 const isCI = require('is-ci');
 const gitLog = require('parse-git-log');
 
@@ -17,7 +18,7 @@ const test = [
 
 const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
 const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
-const release = ({ helaShell }) =>
+const release = ({ helaShell } /* eslint-disable max-statements */) =>
   gitLog.promise().then((commits) => {
     const { header, body } = commits[1].data;
     const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
@@ -34,12 +35,18 @@ const release = ({ helaShell }) =>
     if (/break|breaking|major/.test(parts[1]) || isBreaking) {
       version = 'major';
     }
+
+    process.env.SKIPPING_PUBLISH_QUX = 'FOOBAR';
+
     if (version === null) {
+      console.log('SKIP PUBLISHING'); // eslint-disable-line no-console
       return null;
     }
-    process.env.IS_VALID_COMMIT_TYPE = 'YES';
 
-    return helaShell(`yarn version --new-version ${version}`);
+    return helaShell([
+      `yarn version --new-version ${version}`,
+      `${path.join(__dirname, 'publisher.sh')}`,
+    ]);
   });
 
 const protect = () => {

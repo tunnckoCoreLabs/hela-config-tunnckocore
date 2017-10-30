@@ -70,14 +70,11 @@ jobs:
             git config --global user.name "Charlike Mike Reagent"
             git config --global user.email "olsten.larck@gmail.com"
       - run:
+          name: Checking ENV
+          command: echo $SKIPPING_PUBLISH_QUX
+      - run:
           name: Releasing to NPM and GitHub
-          command: |
-            yarn start release
-            if [ "${IS_VALID_COMMIT_TYPE}" == "YES" ]; then
-              echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm adduser
-              git push --follow-tags
-              npm publish
-            fi
+          command: yarn start release
 
 workflows:
   version: 2
