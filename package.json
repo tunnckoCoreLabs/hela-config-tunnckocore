@@ -31,7 +31,7 @@
     "is-ci": "1.0.10",
     "nyc": "11.3.0",
     "parse-git-log": "0.2.1",
-    "prettier": "1.7.4",
+    "prettier": "1.8.0",
     "prettier-eslint": "8.2.1",
     "prettier-eslint-cli": "4.4.0",
     "rimraf": "2.6.2"
