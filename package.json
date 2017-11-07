@@ -23,7 +23,7 @@
     "src/"
   ],
   "dependencies": {
-    "all-contributors-cli": "4.5.3",
+    "all-contributors-cli": "4.6.0",
     "eslint": "4.10.0",
     "eslint-config-tunnckocore": "0.2.0",
     "gitcommit": "0.2.4",
