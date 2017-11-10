@@ -43,12 +43,12 @@ const release = ({ helaShell }) =>
     }
 
     return helaShell([
-      'yarn config set version-git-message "chore(release): v%s"',
-      'yarn config set version-sign-git-tag false',
-      'git config --global push.default simple',
-      'git config --global user.name "Charlike Mike Reagent"',
-      'git config --global user.email "olsten.larck@gmail.com"',
-      `yarn version --new-version ${version}`,
+      // 'yarn config set version-git-message "chore(release): v%s"',
+      // 'yarn config set version-sign-git-tag false',
+      // 'git config --global push.default simple',
+      // 'git config --global user.name "Charlike Mike Reagent"',
+      // 'git config --global user.email "olsten.larck@gmail.com"',
+      // `yarn version --new-version ${version}`,
       `${path.join(__dirname, 'publisher.sh')}`,
     ]);
   });

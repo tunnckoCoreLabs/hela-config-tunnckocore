@@ -71,19 +71,15 @@ workflows:
           requires:
             - install
       - build:
-          filters:
-            tags:
-              only: /v.*/
-            branches:
-              only: master
           requires:
             - test
-      - publish:
           filters:
-            tags:
-              only: /v.*/
             branches:
               only: master
+      - publish:
           requires:
             - build
+          filters:
+            branches:
+              only: master
           context: org-global
