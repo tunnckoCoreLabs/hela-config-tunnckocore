@@ -48,7 +48,7 @@ const release = ({ helaShell }) =>
       // 'git config --global push.default simple',
       // 'git config --global user.name "Charlike Mike Reagent"',
       // 'git config --global user.email "olsten.larck@gmail.com"',
-      // `yarn version --new-version ${version}`,
+      `yarn version --no-git-tag-version --new-version ${version}`,
       `${path.join(__dirname, 'publisher.sh')}`,
     ]);
   });
