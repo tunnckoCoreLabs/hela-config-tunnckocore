@@ -5,7 +5,9 @@
 
 const path = require('path');
 const isCI = require('is-ci');
+const semver = require('semver');
 const gitLog = require('parse-git-log');
+const packageJson = require('package-json');
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
 const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix';
@@ -19,28 +21,36 @@ const test = [
 const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
 const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
 
+function detectChange ({ header, body }) {
+  const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
+  const breaking = /BREAKING CHANGE/i;
+  const isBreaking = header.indexOf(breaking) !== -1 || body.indexOf(breaking) !== -1;
+  let increment = null;
+
+  if (/fix|bugfix|patch/.test(parts[1])) {
+    increment = 'patch';
+  }
+  if (/feat|feature|minor/.test(parts[1])) {
+    increment = 'minor';
+  }
+  if (/break|breaking|major/.test(parts[1]) || isBreaking) {
+    increment = 'major';
+  }
+
+  return increment;
+}
+
 const release = ({ helaShell }) =>
-  gitLog.promise().then((commits) => {
-    const { header, body } = commits[0].data;
-    const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
-    const breaking = /BREAKING CHANGE/i;
-    const isBreaking = header.indexOf(breaking) !== -1 || body.indexOf(breaking) !== -1;
-    let version = null;
+  gitLog.promise().then(async (commits) => {
+    const lastCommit = commits[0];
+    const increment = detectChange(lastCommit.data);
 
-    if (/fix|bugfix|patch/.test(parts[1])) {
-      version = 'patch';
-    }
-    if (/feat|feature|minor/.test(parts[1])) {
-      version = 'minor';
-    }
-    if (/break|breaking|major/.test(parts[1]) || isBreaking) {
-      version = 'major';
-    }
+    if (!increment) return null;
 
-    if (version === null) {
-      console.log('SKIP PUBLISHING'); // eslint-disable-line no-console
-      return null;
-    }
+    const pkgName = path.basename(lastCommit.cwd);
+    const pkgJson = await packageJson(pkgName);
+    const currentVersion = pkgJson['dist-tags'].latest;
+    const nextVersion = semver.inc(currentVersion, increment);
 
     return helaShell([
       // 'yarn config set version-git-message "chore(release): v%s"',
@@ -48,7 +58,7 @@ const release = ({ helaShell }) =>
       // 'git config --global push.default simple',
       // 'git config --global user.name "Charlike Mike Reagent"',
       // 'git config --global user.email "olsten.larck@gmail.com"',
-      `yarn version --no-git-tag-version --new-version ${version}`,
+      `yarn version --no-git-tag-version --new-version ${nextVersion}`,
       `${path.join(__dirname, 'publisher.sh')}`,
     ]);
   });
