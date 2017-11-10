@@ -49,7 +49,7 @@ const release = ({ helaShell }) =>
 
     const pkgName = path.basename(lastCommit.cwd);
     const pkgJson = await packageJson(pkgName);
-    const currentVersion = pkgJson['dist-tags'].latest;
+    const currentVersion = pkgJson.version;
     const nextVersion = semver.inc(currentVersion, increment);
 
     return helaShell([
