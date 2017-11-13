@@ -60,7 +60,7 @@ jobs:
       - *restore_modules_cache
       - run:
           name: Trying to deploy
-          command: yarn start release
+          command: yarn hela release
 
 workflows:
   version: 2
