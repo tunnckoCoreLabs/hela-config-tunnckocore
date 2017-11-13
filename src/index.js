@@ -11,15 +11,15 @@ const packageJson = require('package-json');
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
 const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix';
-const style = ['yarn start format', 'yarn start lint'];
+const style = ['yarn hela format', 'yarn hela lint'];
 const test = [
   'nyc --reporter=lcov node test/index.js',
   'nyc report',
   'nyc check-coverage',
 ];
 
-const precommit = ['yarn start style', 'git status --porcelain', 'yarn start test'];
-const commit = ['yarn start ac gen', 'git add --all', 'gitcommit -s -S'];
+const precommit = ['yarn hela style', 'git status --porcelain', 'yarn hela test'];
+const commit = ['yarn hela ac gen', 'git add --all', 'gitcommit -s -S'];
 
 function detectChange ({ header, body }) {
   const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);

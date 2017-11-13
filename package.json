@@ -7,10 +7,9 @@
   "nspId": "e5980075-9545-47a2-b946-35ee5ba2091d",
   "main": "./src/index.js",
   "scripts": {
-    "start": "hela",
-    "test": "yarn start test",
-    "precommit": "yarn start precommit",
-    "commit": "yarn start commit"
+    "test": "yarn hela test",
+    "precommit": "yarn hela precommit",
+    "commit": "yarn hela commit"
   },
   "license": "Apache-2.0",
   "licenseStart": 2017,
