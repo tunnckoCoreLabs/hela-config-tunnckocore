@@ -709,11 +709,11 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
-detect-next-version@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/detect-next-version/-/detect-next-version-1.0.0.tgz#aa87d790a8e11fba360476a7bfcd185bc257f673"
+detect-next-version@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/detect-next-version/-/detect-next-version-1.1.2.tgz#f7736888e689a4250c3bc0a924cd0c332e27a57c"
   dependencies:
-    parse-commit-message "0.1.1"
+    parse-commit-message "0.2.0"
 
 dezalgo@^1.0.3:
   version "1.0.3"
@@ -2213,9 +2213,9 @@ p-reduce@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-reduce/-/p-reduce-1.0.0.tgz#18c2b0dd936a4690a529f8231f58a0fdb6a47dfa"
 
-parse-commit-message@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/parse-commit-message/-/parse-commit-message-0.1.1.tgz#cfbe9e84aa5f4cdbe2bfc559f7829337d06f78c4"
+parse-commit-message@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/parse-commit-message/-/parse-commit-message-0.2.0.tgz#1a5fe358999ad7cd1f3f0e0135622342681ccce4"
 
 parse-git-log@0.2.1:
   version "0.2.1"
