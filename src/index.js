@@ -8,6 +8,7 @@ const isCI = require('is-ci');
 const semver = require('semver');
 const gitLog = require('parse-git-log');
 const packageJson = require('package-json');
+const detectChange = require('detect-next-version');
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}';
 const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix';
@@ -21,42 +22,23 @@ const test = [
 const precommit = ['yarn hela style', 'git status --porcelain', 'yarn hela test'];
 const commit = ['yarn hela ac gen', 'git add --all', 'gitcommit -s -S'];
 
-function detectChange ({ header, body }) {
-  const parts = /^(\w+)\((.+)\): (.+)$/.exec(header);
-  const breaking = /BREAKING CHANGE/i;
-  const isBreaking = header.indexOf(breaking) !== -1 || body.indexOf(breaking) !== -1;
-  let increment = null;
+const release = async ({ helaShell }) => {
+  const commits = await gitLog.promise();
+  const lastCommit = commits[0];
+  const increment = detectChange(lastCommit.contents);
 
-  if (/fix|bugfix|patch/.test(parts[1])) {
-    increment = 'patch';
-  }
-  if (/feat|feature|minor/.test(parts[1])) {
-    increment = 'minor';
-  }
-  if (/break|breaking|major/.test(parts[1]) || isBreaking) {
-    increment = 'major';
-  }
+  if (!increment) return null;
 
-  return increment;
-}
+  const pkgName = path.basename(lastCommit.cwd);
+  const pkgJson = await packageJson(pkgName);
+  const currentVersion = pkgJson.version;
+  const nextVersion = semver.inc(currentVersion, increment);
 
-const release = ({ helaShell }) =>
-  gitLog.promise().then(async (commits) => {
-    const lastCommit = commits[0];
-    const increment = detectChange(lastCommit.data);
-
-    if (!increment) return null;
-
-    const pkgName = path.basename(lastCommit.cwd);
-    const pkgJson = await packageJson(pkgName);
-    const currentVersion = pkgJson.version;
-    const nextVersion = semver.inc(currentVersion, increment);
-
-    return helaShell([
-      `yarn version --no-git-tag-version --new-version ${nextVersion}`,
-      `${path.join(__dirname, 'publisher.sh')}`,
-    ]);
-  });
+  return helaShell([
+    `yarn version --no-git-tag-version --new-version ${nextVersion}`,
+    `${path.join(__dirname, 'publisher.sh')}`,
+  ]);
+};
 
 const protect = () => {
   /* istanbul ignore next */

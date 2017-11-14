@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "all-contributors-cli": "4.8.1",
+    "detect-next-version": "0.1.1",
     "eslint": "4.11.0",
     "eslint-config-tunnckocore": "0.2.0",
     "gitcommit": "0.2.4",
