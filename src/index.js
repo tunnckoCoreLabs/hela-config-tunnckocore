@@ -22,17 +22,19 @@ const test = [
 const precommit = ['yarn hela style', 'git status --porcelain', 'yarn hela test'];
 const commit = ['yarn hela ac gen', 'git add --all', 'gitcommit -s -S'];
 
+/* eslint-disable no-shadow */
+
 const release = async ({ helaShell }) => {
   const commits = await gitLog.promise();
   const lastCommit = commits[0];
-  const increment = detectChange(lastCommit.contents);
-
-  if (!increment) return null;
+  const commit = detectChange(lastCommit.contents, true);
+  console.log(commit);
+  if (!commit.increment) return null;
 
   const pkgName = path.basename(lastCommit.cwd);
   const pkgJson = await packageJson(pkgName);
   const currentVersion = pkgJson.version;
-  const nextVersion = semver.inc(currentVersion, increment);
+  const nextVersion = semver.inc(currentVersion, commit.increment);
 
   return helaShell([
     `yarn version --no-git-tag-version --new-version ${nextVersion}`,
