@@ -4,10 +4,11 @@
  */
 
 const path = require('path')
+const util = require('util')
 const isCI = require('is-ci')
 const semver = require('semver')
 const gitLog = require('parse-git-log')
-const packageJson = require('package-json')
+const packageJson = require('get-pkg')
 const detectChange = require('detect-next-version')
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}'
@@ -19,38 +20,46 @@ const test = [
   'nyc check-coverage',
 ]
 
-const precommit = ['yarn hela style', 'git status --porcelain', 'yarn hela test']
+const precommit = ['yarn hela style', 'git status --porcelain', 'yarn test']
 const commit = ['yarn hela ac gen', 'git add --all', 'gitcommit -s -S']
 
 /* eslint-disable no-shadow */
 
 const release = async ({ helaShell }) => {
+  /* istanbul ignore if */
+  if (!isCI && process.env.NODE_ENV !== 'test') {
+    throw new Error('expect `release` to be run only on CI or in testing')
+  }
+
   const commits = await gitLog.promise()
   const lastCommit = commits[0]
   const commit = detectChange(lastCommit.contents, true)
   console.log(commit)
+
+  /* istanbul ignore if */
   if (!commit.increment) return null
 
   const pkgName = path.basename(lastCommit.cwd)
-  const pkgJson = await packageJson(pkgName)
+  const pkgJson = await util.promisify(packageJson)(pkgName)
   const currentVersion = pkgJson.version
   const nextVersion = semver.inc(currentVersion, commit.increment)
 
+  if (process.env.NODE_ENV === 'test') {
+    return { pkgJson, currentVersion, nextVersion }
+  }
+
+  /* istanbul ignore next */
   return helaShell([
     `yarn version --no-git-tag-version --new-version ${nextVersion}`,
     `${path.join(__dirname, 'publisher.sh')}`,
   ])
 }
 
-const protect = () => {
-  /* istanbul ignore next */
-  if (isCI) {
-    return Promise.resolve()
+const protect = async () => {
+  if (!isCI) {
+    const msg = 'the "npm publish" is forbidden, we release and publish on CI service'
+    throw new Error(msg)
   }
-
-  const msg = 'the "npm publish" is forbidden, we use semantic-release on CI'
-
-  return Promise.reject(new Error(msg))
 }
 
 const ac = ({ argv, helaExec }) => {
