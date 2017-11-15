@@ -2082,9 +2082,9 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-2.1.1.tgz#724864a8b806e7f95c5cbf9c0232ae074517eb75"
+new-release@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-2.1.2.tgz#c99be2c9c07cbf7a79e4dd87ab387a5d757cd841"
   dependencies:
     detect-next-version "1.1.3"
     execa-pro "1.0.2"
