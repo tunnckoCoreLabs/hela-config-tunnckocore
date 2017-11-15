@@ -27,7 +27,7 @@
     "gitcommit": "0.2.4",
     "hela": "1.3.14",
     "is-ci": "1.0.10",
-    "new-release": "2.1.1",
+    "new-release": "2.1.2",
     "nyc": "11.3.0",
     "prettier": "1.8.2",
     "prettier-eslint": "8.2.1",
