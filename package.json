@@ -25,7 +25,6 @@
   "dependencies": {
     "all-contributors-cli": "4.8.1",
     "gitcommit": "0.2.4",
-    "hela": "1.3.14",
     "is-ci": "1.0.10",
     "new-release": "2.1.2",
     "nyc": "11.3.0",
@@ -38,6 +37,7 @@
   "devDependencies": {
     "eslint": "4.11.0",
     "eslint-config-tunnckocore": "0.2.0",
+    "hela": "1.3.14",
     "isobject": "3.0.1",
     "mukla": "0.4.9"
   },

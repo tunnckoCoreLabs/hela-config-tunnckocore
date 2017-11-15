@@ -3,26 +3,23 @@
  * @license Apache-2.0
  */
 
-// const path = require('path')
-// const util = require('util')
 const isCI = require('is-ci')
 const { prepublish, publish } = require('new-release')
 
+const helaBin = process.cwd().endsWith('hela') ? './src/cli.js' : 'yarn hela'
+
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}'
 const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix'
-const style = ['yarn hela format', 'yarn hela lint']
+const style = [`${helaBin} format`, `${helaBin} lint`]
 const test = [
   'nyc --reporter=lcov node test/index.js',
   'nyc report',
   'nyc check-coverage',
 ]
 
-const precommit = ['yarn hela style', 'git status --porcelain', 'yarn test']
-const commit = ['yarn hela ac gen', 'git add --all', 'gitcommit -s -S']
+const precommit = [`${helaBin} style`, 'git status --porcelain', 'yarn test']
+const commit = [`${helaBin} ac gen`, 'git add --all', 'gitcommit -s -S']
 
-/* eslint-disable no-shadow */
-
-// const release = 'new-release'
 const release = async ({ cwd }) => {
   /* istanbul ignore if */
   if (!isCI && process.env.NODE_ENV !== 'test') {
