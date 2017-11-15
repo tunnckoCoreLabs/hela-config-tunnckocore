@@ -5,7 +5,7 @@
 
 const isCI = require('is-ci')
 const test = require('mukla')
-const isObject = require('isobject')
+// const isObject = require('isobject')
 const tasks = require('../src/index.js')
 
 test('preset/config export tasks object', (done) => {
@@ -25,11 +25,11 @@ test('prepublish task should throw on local', () => {
   })
 })
 
-test('release task work correctly and return object in testing mode', async () => {
-  const result = await tasks.release({}, true)
+// test('release task work correctly and return object in testing mode', async () => {
+//   const result = await tasks.release({}, true)
 
-  test.strictEqual(isObject(result), true)
-  test.strictEqual(isObject(result.pkgJson), true)
-  test.ok(result.currentVersion)
-  test.ok(result.nextVersion)
-})
+//   test.strictEqual(isObject(result), true)
+//   test.strictEqual(isObject(result.pkgJson), true)
+//   test.ok(result.currentVersion)
+//   test.ok(result.nextVersion)
+// })

@@ -3,13 +3,10 @@
  * @license Apache-2.0
  */
 
-const path = require('path')
-const util = require('util')
+// const path = require('path')
+// const util = require('util')
 const isCI = require('is-ci')
-const semver = require('semver')
-const gitLog = require('parse-git-log')
-const packageJson = require('get-pkg')
-const detectChange = require('detect-next-version')
+// const { prepublish, publish } = require('new-release')
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}'
 const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix'
@@ -25,35 +22,24 @@ const commit = ['yarn hela ac gen', 'git add --all', 'gitcommit -s -S']
 
 /* eslint-disable no-shadow */
 
-const release = async ({ helaShell }) => {
-  /* istanbul ignore if */
-  if (!isCI && process.env.NODE_ENV !== 'test') {
-    throw new Error('expect `release` to be run only on CI or in testing')
-  }
+const release = 'new-release'
+// const release = async ({ cwd }) => {
+//   /* istanbul ignore if */
+//   if (!isCI && process.env.NODE_ENV !== 'test') {
+//     throw new Error('expect `release` to be run only on CI or in testing')
+//   }
 
-  const commits = await gitLog.promise()
-  const lastCommit = commits[0]
-  const commit = detectChange(lastCommit.contents, true)
-  console.log(commit)
+//   const result = await prepublish(cwd)
 
-  /* istanbul ignore if */
-  if (!commit.increment) return null
+//   /* istanbul ignore if */
+//   if (!result) return null
 
-  const pkgName = path.basename(lastCommit.cwd)
-  const pkgJson = await util.promisify(packageJson)(pkgName)
-  const currentVersion = pkgJson.version
-  const nextVersion = semver.inc(currentVersion, commit.increment)
+//   if (process.env.NODE_ENV === 'test') {
+//     return result
+//   }
 
-  if (process.env.NODE_ENV === 'test') {
-    return { pkgJson, currentVersion, nextVersion }
-  }
-
-  /* istanbul ignore next */
-  return helaShell([
-    `yarn version --no-git-tag-version --new-version ${nextVersion}`,
-    `${path.join(__dirname, 'publisher.sh')}`,
-  ])
-}
+//   return publish(result.nextVersion)
+// }
 
 const protect = async () => {
   if (!isCI) {
