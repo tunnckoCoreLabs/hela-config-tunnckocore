@@ -6,7 +6,7 @@
 // const path = require('path')
 // const util = require('util')
 const isCI = require('is-ci')
-// const { prepublish, publish } = require('new-release')
+const { prepublish, publish } = require('new-release')
 
 const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}'
 const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix'
@@ -22,24 +22,24 @@ const commit = ['yarn hela ac gen', 'git add --all', 'gitcommit -s -S']
 
 /* eslint-disable no-shadow */
 
-const release = 'new-release'
-// const release = async ({ cwd }) => {
-//   /* istanbul ignore if */
-//   if (!isCI && process.env.NODE_ENV !== 'test') {
-//     throw new Error('expect `release` to be run only on CI or in testing')
-//   }
+// const release = 'new-release'
+const release = async ({ cwd }) => {
+  /* istanbul ignore if */
+  if (!isCI && process.env.NODE_ENV !== 'test') {
+    throw new Error('expect `release` to be run only on CI or in testing')
+  }
 
-//   const result = await prepublish(cwd)
+  const result = await prepublish(cwd)
 
-//   /* istanbul ignore if */
-//   if (!result) return null
+  /* istanbul ignore if */
+  if (!result) return null
 
-//   if (process.env.NODE_ENV === 'test') {
-//     return result
-//   }
+  if (process.env.NODE_ENV === 'test') {
+    return result
+  }
 
-//   return publish(result.nextVersion)
-// }
+  return publish(result.nextVersion)
+}
 
 const protect = async () => {
   if (!isCI) {
