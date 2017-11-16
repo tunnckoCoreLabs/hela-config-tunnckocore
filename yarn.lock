@@ -1392,9 +1392,9 @@ hawk@~6.0.2:
     hoek "4.x.x"
     sntp "2.x.x"
 
-hela@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/hela/-/hela-2.0.1.tgz#fc4124d1f57473db7e1d8d47424a1b3f30823c07"
+hela@2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/hela/-/hela-2.0.6.tgz#5f4b3415c08bc11770822fb89864ac3e0090f747"
   dependencies:
     "@tunnckocore/pretty-config" "0.2.2"
     arrayify "1.0.0"
