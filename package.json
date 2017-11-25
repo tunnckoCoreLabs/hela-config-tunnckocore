@@ -23,7 +23,7 @@
     "src/"
   ],
   "dependencies": {
-    "all-contributors-cli": "4.9.1",
+    "all-contributors-cli": "4.10.0",
     "gitcommit": "0.2.4",
     "is-ci": "1.0.10",
     "new-release": "2.1.5",
