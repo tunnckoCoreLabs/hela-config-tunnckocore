@@ -29,7 +29,7 @@
     "new-release": "2.1.5",
     "nyc": "11.4.1",
     "prettier": "1.9.2",
-    "prettier-eslint": "8.5.0",
+    "prettier-eslint": "8.6.0",
     "prettier-eslint-cli": "4.6.1",
     "rimraf": "2.6.2",
     "semver": "5.4.1"
