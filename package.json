@@ -26,7 +26,7 @@
     "all-contributors-cli": "4.10.1",
     "gitcommit": "0.2.4",
     "is-ci": "1.1.0",
-    "new-release": "2.1.10",
+    "new-release": "4.0.1",
     "nyc": "11.4.1",
     "prettier": "1.10.2",
     "prettier-eslint": "8.8.1",

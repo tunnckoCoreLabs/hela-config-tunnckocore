@@ -217,7 +217,7 @@ array-unique@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.2.1.tgz#a1d97ccafcbc2625cc70fadceb36a50c58b01a53"
 
-arrayify@1.0.0, arrayify@^1.0.0:
+arrayify@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/arrayify/-/arrayify-1.0.0.tgz#f06a98235b8ef14ca1995992411a9fefb4e49cfc"
 
@@ -553,7 +553,7 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-collect-mentions@^0.1.1:
+collect-mentions@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/collect-mentions/-/collect-mentions-0.1.1.tgz#5fbb3d9e5a0fa4b458a46900b93d1aabd2647fd2"
   dependencies:
@@ -744,11 +744,11 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
-detect-next-version@1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/detect-next-version/-/detect-next-version-1.1.7.tgz#eddf82d7363a521dd0d0cff2bf71aed421fdca1b"
+detect-next-version@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/detect-next-version/-/detect-next-version-2.0.2.tgz#22b56b98837aea0d350e787c43975be4a7e05eab"
   dependencies:
-    parse-commit-message "1.1.1"
+    parse-commit-message "1.1.2"
 
 dezalgo@^1.0.3:
   version "1.0.3"
@@ -2143,11 +2143,11 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-new-release@2.1.10:
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/new-release/-/new-release-2.1.10.tgz#5830455884cb185fccce41177daa0a1b005fc354"
+new-release@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/new-release/-/new-release-4.0.1.tgz#fcb653ad48827698d7d770fd07c216078a547bc5"
   dependencies:
-    detect-next-version "1.1.7"
+    detect-next-version "2.0.2"
     execa-pro "1.0.2"
     is-ci "1.1.0"
     latest-version "3.1.0"
@@ -2344,12 +2344,12 @@ package-json@^4.0.0:
     registry-url "^3.0.3"
     semver "^5.1.0"
 
-parse-commit-message@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/parse-commit-message/-/parse-commit-message-1.1.1.tgz#2cd95ec3007137110fbe8ea0e79d79a0a33079ad"
+parse-commit-message@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/parse-commit-message/-/parse-commit-message-1.1.2.tgz#95b6015bcb99a6efab5a8e208c95e59cce62f40d"
   dependencies:
-    arrayify "^1.0.0"
-    collect-mentions "^0.1.1"
+    arrayify "1.0.0"
+    collect-mentions "0.1.1"
 
 parse-git-log@0.2.1:
   version "0.2.1"

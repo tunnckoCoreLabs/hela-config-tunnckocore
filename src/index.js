@@ -20,7 +20,7 @@ const test = [
 const precommit = [`${helaBin} style`, 'git status --porcelain', 'yarn test']
 const commit = [`${helaBin} ac gen`, 'git add --all', 'gitcommit -s -S']
 
-const release = 'new-release --ci'
+const release = 'new-release'
 
 const protect = async () => {
   if (!isCI) {
