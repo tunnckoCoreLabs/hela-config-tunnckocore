@@ -54,10 +54,10 @@ const test = async (opts) => {
     return shell(`node ${flags.path}`);
   }
   if (flags.check === false) {
-    return shell([`nyc --reporter=lcov ${cmd}`, 'nyc report']);
+    return shell([`nyc --reporter text-lcov ${cmd}`, 'nyc report']);
   }
 
-  return shell([`nyc --reporter=lcov ${cmd}`, 'nyc report', 'nyc check-coverage']);
+  return shell([`nyc --reporter text-lcov ${cmd}`, 'nyc report', 'nyc check-coverage']);
 };
 
 const commit = async (opts) => {
