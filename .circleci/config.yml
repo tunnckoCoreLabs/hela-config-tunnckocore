@@ -41,7 +41,13 @@ jobs:
           name: Sending test coverage to CodeCov
           command: bash <(curl -s https://codecov.io/bash)
 
-  build:
+  # build:
+  #   <<: *defaults
+  #   steps:
+  #     - checkout
+  #     - *restore_modules_cache
+
+  release:
     <<: *defaults
     steps:
       - checkout
@@ -52,12 +58,6 @@ jobs:
       - store_artifacts:
           path: dist
           destination: hela-config-tunnckocore
-
-  release:
-    <<: *defaults
-    steps:
-      - checkout
-      - *restore_modules_cache
       - run:
           name: Releasing and publishing
           command: yarn hela release
@@ -70,15 +70,15 @@ workflows:
       - test:
           requires:
             - install
-      - build:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
+      # - build:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
       - release:
           requires:
-            - build
+            - test
           filters:
             branches:
               only: master

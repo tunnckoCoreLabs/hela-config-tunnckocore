@@ -39,7 +39,7 @@
     "mukla": "0.4.9"
   },
   "files": [
-    "dist/"
+    "dist"
   ],
   "eslintConfig": {
     "extends": "xaxa"
