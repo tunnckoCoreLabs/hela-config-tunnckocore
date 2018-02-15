@@ -49,7 +49,7 @@
     "extends": "tunnckocore"
   },
   "hela": {
-    "extends": "tunnckocore"
+    "extends": "./temporary/index.cjs.js"
   },
   "rollup": {
     "input": "src/index.js",
@@ -77,8 +77,8 @@
   "homepage": "https://github.com/tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "cdn": "dist/index.umd.js",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "main": "temporary/index.cjs.js",
+  "module": "temporary/index.es.js",
   "verb": {
     "run": true,
     "toc": {
