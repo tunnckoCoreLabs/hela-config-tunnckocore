@@ -52,12 +52,12 @@ jobs:
     steps:
       - checkout
       - *restore_modules_cache
-      - run:
-          name: Creating distributable files
-          command: yarn hela build
-      - store_artifacts:
-          path: dist
-          destination: hela-config-tunnckocore
+      # - run:
+      #     name: Creating distributable files
+      #     command: yarn hela build
+      # - store_artifacts:
+      #     path: dist
+      #     destination: hela-config-tunnckocore
       - run:
           name: Releasing and publishing
           command: yarn hela release

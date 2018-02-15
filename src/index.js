@@ -83,7 +83,12 @@ const commit = async (opts) => {
 };
 
 const docs = 'verb';
-const release = 'new-release';
+
+const release = async (opts) => {
+  const { shell } = opts;
+  await build(opts);
+  return shell('new-release');
+};
 
 const protect = async () => {
   if (!isCI) {
