@@ -105,8 +105,10 @@ async function rolldown(config) {
      * then extend the defaults with these coming configs.
      */
 
-    const ob = await extendDefaults(opts);
-    console.log(ob);
+    const obj = await extendDefaults(opts);
+
+    // todo
+    console.log('extendDefaults', obj);
     return [];
     // return rolldown(extendDefaults(opts))
   }
@@ -212,8 +214,8 @@ async function run(cwd) {
  * CLI?
  */
 
-export default async function runnerWithLog(cwd) {
-  const results = await run(cwd);
+export default async function runnerWithLog(opts) {
+  const results = await run(opts.cwd);
   const res = results.reduce((acc, config) => acc.concat(config), []).filter(Boolean);
 
   const log = (cfg) => {

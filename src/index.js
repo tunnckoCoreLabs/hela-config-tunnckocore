@@ -36,30 +36,35 @@ const lint = async ({ argv, shell }) => {
   return shell(cmd);
 };
 
-const build = async ({ shell, cwd }) => {
+const build = async (opts) => {
+  const { shell } = opts;
   await shell('rm -rf dist');
-  await runnerWithLog(cwd);
+  await runnerWithLog(opts);
 };
 
-const test = async ({ argv, shell, cwd }) => {
-  const opts = Object.assign({ path: 'test' }, argv);
-  const cmd = `node ${opts.path}`;
+const test = async (opts) => {
+  const { argv, shell } = opts;
 
-  await build({ cwd, shell });
+  const flags = Object.assign({ path: 'test' }, argv);
+  const cmd = `node ${flags.path}`;
 
-  if (opts.cov === false) {
-    return shell(`node ${opts.path}`);
+  await build(opts);
+
+  if (flags.cov === false) {
+    return shell(`node ${flags.path}`);
   }
-  if (opts.check === false) {
+  if (flags.check === false) {
     return shell([`nyc --reporter=lcov ${cmd}`, 'nyc report']);
   }
 
   return shell([`nyc --reporter=lcov ${cmd}`, 'nyc report', 'nyc check-coverage']);
 };
 
-const commit = async ({ argv, shell }) => {
+const commit = async (opts) => {
+  const { argv, shell } = opts;
+
   if (argv.lint !== false) {
-    await lint({ argv, shell });
+    await lint(opts);
   }
 
   if (argv.dry) {
@@ -71,7 +76,7 @@ const commit = async ({ argv, shell }) => {
   }
 
   if (argv.test !== false) {
-    await test({ argv, shell });
+    await test(opts);
   }
 
   return shell(['git status --porcelain', 'git add --all', 'gitcommit -s -S']);

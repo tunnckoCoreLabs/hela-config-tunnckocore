@@ -36,17 +36,19 @@
   },
   "devDependencies": {
     "hela": "^2.0.8",
+    "hela-config-tunnckocore": "3.0.1",
     "mukla": "^0.4.9"
   },
   "files": [
-    "dist/",
-    "src/",
-    "temporary"
+    "dist/"
   ],
   "eslintConfig": {
     "extends": "xaxa"
   },
   "renovate": {
+    "extends": "tunnckocore"
+  },
+  "hela": {
     "extends": "tunnckocore"
   },
   "rollup": {
@@ -55,9 +57,6 @@
       "cjs",
       "es"
     ]
-  },
-  "hela": {
-    "extends": "./temporary/index.cjs.js"
   },
   "nyc": {
     "statements": 0,
@@ -78,8 +77,8 @@
   "homepage": "https://github.com/tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
   "cdn": "dist/index.umd.js",
-  "main": "temporary/index.cjs.js",
-  "module": "temporary/index.es.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
   "verb": {
     "run": true,
     "toc": {
