@@ -109,8 +109,7 @@
       "execa",
       "hela",
       "new-release",
-      "semantic-release",
-      "tsinyletter-url"
+      "semantic-release"
     ]
   }
 }
