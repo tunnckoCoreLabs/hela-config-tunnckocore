@@ -8,7 +8,6 @@
     "start": "hela",
     "lint": "hela lint",
     "test": "hela test",
-    "precommit": "hela build && rm -rf temporary && cp -R dist/ temporary",
     "commit": "hela commit --no-docs",
     "prepublishOnly": "hela protect"
   },
@@ -37,6 +36,7 @@
   },
   "devDependencies": {
     "hela": "^2.0.8",
+    "hela-config-tunnckocore": "^3.0.12",
     "mukla": "^0.4.9"
   },
   "files": [
@@ -49,7 +49,7 @@
     "extends": "tunnckocore"
   },
   "hela": {
-    "extends": "./temporary/index.cjs.js"
+    "extends": "tunnckocore"
   },
   "rollup": {
     "input": "src/index.js",
