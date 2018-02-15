@@ -58,6 +58,7 @@ pids
 
 # Editors
 *.idea
+*.vscode
 
 # Another files #
 # ###############
@@ -93,3 +94,4 @@ pids
 
 # dotenv environment variables file
 .env
+.pem

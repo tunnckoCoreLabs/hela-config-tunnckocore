@@ -3,54 +3,98 @@
  * @license Apache-2.0
  */
 
-const isCI = require('is-ci')
-// const { prepublish, publish } = require('new-release')
+/**
+ * Switch to ES Modules, when `resolve-plugins` async is done.
+ *
+ * Reminder: Only needed deps which should remain
+ * when the `rolldown` is released (currently live here).
+ *
+ * "dependencies": {
+ *   "eslint": "^4.17.0",
+ *   "eslint-config-xaxa": "^0.2.2",
+ *   "gitcommit": "^0.2.4",
+ *   "is-ci": "^1.1.0",
+ *   "new-release": "^4.0.1",
+ *   "nyc": "^11.4.1"
+ * }
+ */
 
-const helaBin = process.cwd().endsWith('hela') ? 'yarn hela-self' : 'yarn hela'
+/* eslint-disable import/prefer-default-export, import/no-commonjs, import/no-nodejs-modules */
 
-const format = 'prettier-eslint --write **/*.{mjs,js,jsx,es,es6}'
-const lint = 'eslint --format codeframe **/*.{mjs,js,jsx,es,es6} --fix'
-const style = [`${helaBin} format`, `${helaBin} lint`]
-const test = [
-  'nyc --reporter=lcov node test/index.js',
-  'nyc report',
-  'nyc check-coverage',
-]
+import isCI from 'is-ci';
+import runnerWithLog from './rolldown';
 
-const precommit = [`${helaBin} style`, 'git status --porcelain', 'yarn test']
-const commit = [`${helaBin} ac gen`, 'git add --all', 'gitcommit -s -S']
+const lint = async ({ argv, shell }) => {
+  let cmd = 'eslint src test -f codeframe --quiet --fix';
 
-const release = 'new-release'
+  if (argv.dry) {
+    cmd = `${cmd} --fix-dry`;
+  } else {
+    cmd = `${cmd} --fix`;
+  }
+
+  return shell(cmd);
+};
+
+const build = async ({ shell, cwd }) => {
+  await shell('rm -rf dist');
+  await runnerWithLog(cwd);
+};
+
+const test = async ({ argv, shell, cwd }) => {
+  const opts = Object.assign({ path: 'test' }, argv);
+  const cmd = `node ${opts.path}`;
+
+  await build({ cwd, shell });
+
+  if (opts.cov === false) {
+    return shell(`node ${opts.path}`);
+  }
+  if (opts.check === false) {
+    return shell([`nyc --reporter=lcov ${cmd}`, 'nyc report']);
+  }
+
+  return shell([`nyc --reporter=lcov ${cmd}`, 'nyc report', 'nyc check-coverage']);
+};
+
+const commit = async ({ argv, shell }) => {
+  if (argv.lint !== false) {
+    await lint({ argv, shell });
+  }
+
+  if (argv.dry) {
+    return shell(['git add --all', 'gitcommit -s -S']);
+  }
+
+  if (argv.docs !== false) {
+    await shell('yarn start docs');
+  }
+
+  if (argv.test !== false) {
+    await test({ argv, shell });
+  }
+
+  return shell(['git status --porcelain', 'git add --all', 'gitcommit -s -S']);
+};
+
+const docs = 'verb';
+const release = 'new-release';
 
 const protect = async () => {
   if (!isCI) {
-    const msg = 'the "npm publish" is forbidden, we release and publish on CI service'
-    throw new Error(msg)
+    const msg = 'the "npm publish" is forbidden, we release and publish on CI service';
+    throw new Error(msg);
   }
-}
+};
 
-const ac = ({ argv, exec }) => {
-  const arg = argv._.slice(1).shift()
-  if (!arg) {
-    return exec('all-contributors init')
-  }
-  if (arg === 'a' || arg === 'add') {
-    return exec('all-contributors add')
-  }
-  if (arg === 'g' || arg === 'gen' || arg === 'generate') {
-    return exec('all-contributors generate')
-  }
-  return Promise.reject(new Error('hela ac: provide "add" or "gen" command'))
-}
-
-module.exports = {
-  ac,
-  format,
+const tasks = {
   lint,
-  style,
   test,
-  precommit,
   commit,
+  docs,
+  build,
   release,
   protect,
-}
+};
+
+export default { tasks };
