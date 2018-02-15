@@ -1266,7 +1266,7 @@ hela-config-tunnckocore@3.0.1:
     rollup-plugin-commonjs "^8.3.0"
     time-stamp "^2.0.0"
 
-hela@^2.0.8:
+hela@2.0.8:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/hela/-/hela-2.0.8.tgz#0503a6352715bb0eccea0d4f5239e3a1b4cddef6"
   dependencies:
@@ -1834,7 +1834,7 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-mukla@^0.4.9:
+mukla@0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/mukla/-/mukla-0.4.9.tgz#195cf3954154597e35599fdbb4a13c2a41d733f4"
   dependencies:
