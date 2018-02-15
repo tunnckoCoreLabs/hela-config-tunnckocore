@@ -39,9 +39,7 @@
     "mukla": "0.4.9"
   },
   "files": [
-    "dist/",
-    "temporary/",
-    "src/"
+    "dist/"
   ],
   "eslintConfig": {
     "extends": "xaxa"
@@ -77,9 +75,9 @@
   "repository": "tunnckoCore/hela-config-tunnckocore",
   "homepage": "https://github.com/tunnckoCore/hela-config-tunnckocore",
   "author": "Charlike Mike Reagent <@tunnckoCore> (https://i.am.charlike.online)",
-  "cdn": "dist/index.umd.js",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
+  "cdn": "./dist/index.umd.js",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
   "verb": {
     "run": true,
     "toc": {
