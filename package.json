@@ -36,11 +36,12 @@
   },
   "devDependencies": {
     "hela": "2.0.8",
-    "hela-config-tunnckocore": "3.0.1",
     "mukla": "0.4.9"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "temporary/",
+    "src/"
   ],
   "eslintConfig": {
     "extends": "xaxa"

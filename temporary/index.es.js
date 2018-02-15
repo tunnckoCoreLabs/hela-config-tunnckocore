@@ -236,24 +236,6 @@ async function runnerWithLog(opts) {
  * @license Apache-2.0
  */
 
-/**
- * Switch to ES Modules, when `resolve-plugins` async is done.
- *
- * Reminder: Only needed deps which should remain
- * when the `rolldown` is released (currently live here).
- *
- * "dependencies": {
- *   "eslint": "^4.17.0",
- *   "eslint-config-xaxa": "^0.2.2",
- *   "gitcommit": "^0.2.4",
- *   "is-ci": "^1.1.0",
- *   "new-release": "^4.0.1",
- *   "nyc": "^11.4.1"
- * }
- */
-
-/* eslint-disable import/prefer-default-export, import/no-commonjs, import/no-nodejs-modules */
-
 const lint = async ({ argv, shell }) => {
   let cmd = 'eslint src test -f codeframe --quiet --fix';
 
