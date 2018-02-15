@@ -710,6 +710,12 @@ eslint-config-airbnb@^16.1.0:
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
 
+eslint-config-tunnckocore@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-tunnckocore/-/eslint-config-tunnckocore-1.0.1.tgz#a559c43e63b07d6d317ca02a27eaf958ef1a83d1"
+  dependencies:
+    eslint-config-xaxa "^0.2.2"
+
 eslint-config-xaxa@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/eslint-config-xaxa/-/eslint-config-xaxa-0.2.2.tgz#727135acddba0e5a8d1906bbd7eb137bc422adcd"
@@ -1245,7 +1251,7 @@ has@^1.0.1:
   dependencies:
     function-bind "^1.0.2"
 
-hela@2.0.8:
+hela@^2.0.8:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/hela/-/hela-2.0.8.tgz#0503a6352715bb0eccea0d4f5239e3a1b4cddef6"
   dependencies:
@@ -1813,7 +1819,7 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-mukla@0.4.9:
+mukla@^0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/mukla/-/mukla-0.4.9.tgz#195cf3954154597e35599fdbb4a13c2a41d733f4"
   dependencies:

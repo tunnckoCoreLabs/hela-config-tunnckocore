@@ -21,7 +21,7 @@
     "@tunnckocore/pretty-config": "^0.5.1",
     "builtin-modules": "^2.0.0",
     "eslint": "^4.17.0",
-    "eslint-config-xaxa": "^0.2.2",
+    "eslint-config-tunnckocore": "^1.0.1",
     "gitcommit": "^0.2.4",
     "is-ci": "^1.1.0",
     "isobject": "^3.0.1",
@@ -36,14 +36,14 @@
     "time-stamp": "^2.0.0"
   },
   "devDependencies": {
-    "hela": "2.0.8",
-    "mukla": "0.4.9"
+    "hela": "^2.0.8",
+    "mukla": "^0.4.9"
   },
   "files": [
     "dist"
   ],
   "eslintConfig": {
-    "extends": "xaxa"
+    "extends": "tunnckocore"
   },
   "renovate": {
     "extends": "tunnckocore"
