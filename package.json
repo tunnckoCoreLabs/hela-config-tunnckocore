@@ -35,8 +35,8 @@
     "time-stamp": "^2.0.0"
   },
   "devDependencies": {
-    "hela": "^2.0.8",
-    "hela-config-tunnckocore": "^3.0.12",
+    "hela": "^2.0.9",
+    "hela-config-tunnckocore": "3.0.13",
     "mukla": "^0.4.9"
   },
   "files": [
