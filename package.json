@@ -8,6 +8,7 @@
     "start": "hela",
     "lint": "hela lint",
     "test": "hela test",
+    "precommit": "hela build && rm -rf temporary && cp -R dist/ temporary",
     "commit": "hela commit --no-docs",
     "prepublishOnly": "hela protect"
   },
