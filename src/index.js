@@ -45,10 +45,13 @@ const build = async (opts) => {
 const test = async (opts) => {
   const { argv, shell } = opts;
 
-  const flags = Object.assign({ path: 'test' }, argv);
+  const flags = Object.assign({ path: 'test', build: true }, argv);
   const cmd = `node ${flags.path}`;
 
-  await build(opts);
+  
+  if (flags.build) {
+    await build(opts);
+  }
 
   if (flags.cov === false) {
     return shell(`node ${flags.path}`);
@@ -85,8 +88,14 @@ const commit = async (opts) => {
 const docs = 'verb';
 
 const release = async (opts) => {
-  const { shell } = opts;
-  await build(opts);
+  const { argv, shell } = opts;
+  const flags = Object.assign({ build: true }, argv);
+  
+  if (flags.build) {
+    await build(opts);
+  }
+  await protect()
+  
   return shell('new-release');
 };
 
