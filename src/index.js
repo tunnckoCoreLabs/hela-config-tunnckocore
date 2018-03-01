@@ -48,11 +48,10 @@ const test = async (opts) => {
   const flags = Object.assign({ path: 'test', build: true }, argv);
   const cmd = `node ${flags.path}`;
 
-  
   if (flags.build) {
     await build(opts);
   }
-
+  
   if (flags.cov === false) {
     return shell(`node ${flags.path}`);
   }
@@ -87,6 +86,13 @@ const commit = async (opts) => {
 
 const docs = 'verb';
 
+const protect = async () => {
+  if (!isCI) {
+    const msg = 'the "npm publish" is forbidden, we release and publish on CI service';
+    throw new Error(msg);
+  }
+};
+
 const release = async (opts) => {
   const { argv, shell } = opts;
   const flags = Object.assign({ build: true }, argv);
@@ -94,16 +100,10 @@ const release = async (opts) => {
   if (flags.build) {
     await build(opts);
   }
-  await protect()
+  
+  await protect();
   
   return shell('new-release');
-};
-
-const protect = async () => {
-  if (!isCI) {
-    const msg = 'the "npm publish" is forbidden, we release and publish on CI service';
-    throw new Error(msg);
-  }
 };
 
 const tasks = {
