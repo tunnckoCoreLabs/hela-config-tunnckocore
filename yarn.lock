@@ -461,6 +461,10 @@ cliui@^4.0.0:
     strip-ansi "^4.0.0"
     wrap-ansi "^2.0.0"
 
+clorox@^1.0.1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/clorox/-/clorox-1.0.3.tgz#6fa63653f280c33d69f548fb14d239ddcfa1590d"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -918,7 +922,7 @@ execa@0.8.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-execa@0.9.0:
+execa@0.9.0, execa@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-0.9.0.tgz#adb7ce62cf985071f60580deb4a88b9e34712d01"
   dependencies:
@@ -1139,6 +1143,14 @@ gitcommit@^0.2.4:
   dependencies:
     asky "0.2.2"
     execa "0.8.0"
+
+gitcommit@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gitcommit/-/gitcommit-1.0.0.tgz#9e632e26ae186bf98401520d4786074935b3cda2"
+  dependencies:
+    execa "^0.9.0"
+    mri "^1.1.0"
+    prompts terkelg/prompts
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -1832,7 +1844,7 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mri@1.1.0:
+mri@1.1.0, mri@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/mri/-/mri-1.1.0.tgz#5c0a3f29c8ccffbbb1ec941dcec09d71fa32f36a"
 
@@ -2192,6 +2204,13 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+"prompts@github:terkelg/prompts":
+  version "0.1.4"
+  resolved "https://codeload.github.com/terkelg/prompts/tar.gz/964eb23a83870cb4ae60fb88751e61d376f90176"
+  dependencies:
+    clorox "^1.0.1"
+    sisteransi "^0.1.0"
+
 prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
@@ -2439,6 +2458,10 @@ shebang-regex@^1.0.0:
 signal-exit@^3.0.0, signal-exit@^3.0.1, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+sisteransi@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-0.1.0.tgz#2e6706ac427019b84e60f751d588d87920484f25"
 
 slice-ansi@1.0.0:
   version "1.0.0"
