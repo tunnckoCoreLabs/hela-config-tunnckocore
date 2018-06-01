@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "hela": "^2.0.9",
-    "hela-config-tunnckocore": "3.0.24",
+    "hela-config-tunnckocore": "3.0.25",
     "mukla": "^0.4.9"
   },
   "files": [
