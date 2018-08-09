@@ -29,7 +29,7 @@
     "nyc": "^12.0.0",
     "p-is-promise": "^1.1.0",
     "p-map": "^1.2.0",
-    "pify": "^3.0.0",
+    "pify": "^4.0.0",
     "rollup": "^0.64.0",
     "rollup-plugin-commonjs": "^9.0.0",
     "time-stamp": "^2.0.0"
