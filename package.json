@@ -26,7 +26,7 @@
     "isobject": "^3.0.1",
     "loud-rejection": "^1.6.0",
     "new-release": "^4.0.1",
-    "nyc": "^12.0.0",
+    "nyc": "^13.0.0",
     "p-is-promise": "^1.1.0",
     "p-map": "^1.2.0",
     "pify": "^4.0.0",
