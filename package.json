@@ -22,7 +22,7 @@
     "eslint": "^5.0.0",
     "eslint-config-tunnckocore": "^1.0.1",
     "gitcommit": "^1.0.0",
-    "is-ci": "^1.1.0",
+    "is-ci": "^2.0.0",
     "isobject": "^3.0.1",
     "loud-rejection": "^1.6.0",
     "new-release": "^5.0.0",
