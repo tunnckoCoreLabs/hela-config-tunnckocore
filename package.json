@@ -30,7 +30,7 @@
     "p-is-promise": "^2.0.0",
     "p-map": "^2.0.0",
     "pify": "^4.0.0",
-    "rollup": "^0.67.0",
+    "rollup": "^0.68.0",
     "rollup-plugin-commonjs": "^9.0.0",
     "time-stamp": "^2.0.0"
   },
