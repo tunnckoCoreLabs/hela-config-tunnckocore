@@ -24,7 +24,7 @@
     "gitcommit": "^1.0.0",
     "is-ci": "^2.0.0",
     "isobject": "^4.0.0",
-    "loud-rejection": "^1.6.0",
+    "loud-rejection": "^2.0.0",
     "new-release": "^5.0.0",
     "nyc": "^13.0.0",
     "p-is-promise": "^2.0.0",
