@@ -23,7 +23,7 @@
     "eslint-config-tunnckocore": "^3.0.0",
     "gitcommit": "^1.0.0",
     "is-ci": "^2.0.0",
-    "isobject": "^3.0.1",
+    "isobject": "^4.0.0",
     "loud-rejection": "^1.6.0",
     "new-release": "^5.0.0",
     "nyc": "^13.0.0",
