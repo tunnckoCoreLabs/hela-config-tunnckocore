@@ -17,7 +17,7 @@
     "yarn": ">=1.3"
   },
   "dependencies": {
-    "@tunnckocore/pretty-config": "^0.5.1",
+    "@tunnckocore/pretty-config": "^0.9.0",
     "builtin-modules": "^3.0.0",
     "eslint": "^6.0.0",
     "eslint-config-tunnckocore": "^3.0.0",
